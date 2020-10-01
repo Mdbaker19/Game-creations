@@ -23,7 +23,7 @@
     const PIECE_HEIGHT = 30;
     const PIECE_WIDTH = 30;
 
-    const reduceDif = document.getElementById("difficulty");
+    const reduceDif = document.getElementById("difficulty");//in progress
 
 
     function playerSpawn() {
