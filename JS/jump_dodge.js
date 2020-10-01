@@ -2,7 +2,7 @@
 //add an up and down movement
 //projectile will switch between spawn at top section and bottom section randomly
 //Make the speed random too
-//How do i make the player piece fall back down after pushing up???
+//How do i make the player piece fall back down after pushing up????
     //canvas is 1000 wide and 500 tall
     let canvas;
 

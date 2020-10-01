@@ -1,3 +1,7 @@
 body{
     background-color: darkslategray;
 }
+
+button{
+    border-radius: 25%;
+}
