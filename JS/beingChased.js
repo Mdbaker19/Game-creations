@@ -1,5 +1,6 @@
 (function () {
-
+//How to add a wall in the path
+    //How to add a grow or change color when ai is "with in" a range of my piece
     let canvas;
 
     let canvasContext;
@@ -15,7 +16,8 @@
     let playerY = 30;
 
     let computerX = 30;
-    let computerXSpeed;
+    let computerEasySpeed = 2;
+    let computerSpeed = 5;
 
     let computerY = 30;
     let computerYSpeed;
@@ -24,7 +26,6 @@
     const PIECE_WIDTH = 30;
 
     const reduceDif = document.getElementById("difficulty");//in progress
-
 
     function playerSpawn() {
         playerX = Math.floor(Math.random() * 300) + 100;
@@ -49,24 +50,25 @@
             const direction = evt.key.replace("Arrow", "");
             player1 = movePlayer(direction);
 
-
+        //assign this to a variable to be in an if case in the ai function???
         reduceDif.addEventListener("click", function (){
-            // function ai(){
-            //     if(computerX > playerX){
-            //         computerX -= 3;
-            //     } if (computerY > playerY){
-            //         computerY -= 3;
-            //     } if (computerY < playerY){
-            //         computerY += 3;
-            //     } if (computerX < playerX){
-            //         computerX += 3;
-            //     }
+            //computerSpeed -= 4;
+            //rewrite the if case with different speeds?
+            //but reverse them to shift the computer the other way?
+            //does not work:
+            // if(computerX > playerX){
+            //     computerX += computerEasySpeed;
+            // } if (computerY > playerY){
+            //     computerY += computerEasySpeed;
+            // } if (computerY < playerY){
+            //     computerY -= computerEasySpeed;
+            // } if (computerX < playerX){
+            //     computerX -= computerEasySpeed;
             // }
         })
 
         })
     }
-
 
     function callFunctions(){
         drawEverything();
@@ -80,6 +82,7 @@
         colorRect(0, 0, canvas.width, canvas.height, "#bc8f8f");
         colorRect(playerX, playerY, PIECE_WIDTH, PIECE_HEIGHT, "black");//player
         colorRect(computerX, computerY, PIECE_WIDTH, PIECE_HEIGHT, "red");//ai
+        colorRect(400, 200, 10, 200, "green");//wall
         canvasContext.fillText(score, 490, 100)
 
     }
@@ -91,15 +94,8 @@
 
     }
 
-
     function restart(){
-        if(computerY === playerY + 10 || computerY === playerY - 10){
-            playerSpawn();
-            computerSpawn();
-        } if (computerX === playerX + 10 || computerX === playerX - 10){
-            playerSpawn();
-            computerSpawn();
-        }
+        //if ai is within player range width/height then respawn
     }
 
     function movePlayer(direction){
@@ -119,20 +115,15 @@
         }
     }
 
-
-    function playerMovement(){
-
-    }
-
     function ai(){
         if(computerX > playerX){
-            computerX -= 5;
+            computerX -= computerSpeed;
         } if (computerY > playerY){
-            computerY -= 5;
+            computerY -= computerSpeed;
         } if (computerY < playerY){
-            computerY += 5;
+            computerY += computerSpeed;
         } if (computerX < playerX){
-            computerX += 5;
+            computerX += computerSpeed;
         }
     }
 

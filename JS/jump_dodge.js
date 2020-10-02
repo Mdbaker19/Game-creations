@@ -2,7 +2,6 @@
 //add an up and down movement
 //projectile will switch between spawn at top section and bottom section randomly
 //Make the speed random too
-//How do i make the player piece fall back down after pushing up????
     //canvas is 1000 wide and 500 tall
     let canvas;
 
@@ -49,6 +48,7 @@
 
     function callFunctions() {
         drawEverything();
+        playerPieceY +=3;
         moveProjectile();
         collision();
     }
@@ -72,15 +72,23 @@
     }
 
     function movePlayer(direction){
-        switch (direction) {
-            case "Up": //add an if case for when piece is at top
-                playerPieceY -= 100;
-                 break;
-            case "Down": //add an if case for when piece is at bottom
+        //switch (direction) {
+            if(direction === "Up") { //add an if case for when piece is at top
+                if (playerPieceY <= 0) {
+                    playerPieceY += 3;
+                } else
+                    playerPieceY -= 100;
+            }
+                 //break;
+            if(direction === "Down") { //add an if case for when piece is at bottom
+                if (playerPieceY >= canvas.height) {
+                    playerPieceY -= 3;
+                }
                 playerPieceY += 100;
-                break;
+            }
+                //break;
         }
-    }
+    //}
 
     function collision(){
         if(projectileY === playerPieceY){
