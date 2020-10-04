@@ -8,6 +8,7 @@
     let player1;
 
     let score = 0;
+    let difficultAmount = 0;
 
     let computer;
 
@@ -26,6 +27,7 @@
     const PIECE_WIDTH = 30;
 
     const reduceDif = document.getElementById("difficulty");//in progress
+    let difficulty = document.getElementById("amount");
 
     function playerSpawn() {
         playerX = Math.floor(Math.random() * 300) + 100;
@@ -50,25 +52,20 @@
             const direction = evt.key.replace("Arrow", "");
             player1 = movePlayer(direction);
 
-        //assign this to a variable to be in an if case in the ai function???
-        reduceDif.addEventListener("click", function (){
-            //computerSpeed -= 4;
-            //rewrite the if case with different speeds?
-            //but reverse them to shift the computer the other way?
-            //does not work:
-            // if(computerX > playerX){
-            //     computerX += computerEasySpeed;
-            // } if (computerY > playerY){
-            //     computerY += computerEasySpeed;
-            // } if (computerY < playerY){
-            //     computerY -= computerEasySpeed;
-            // } if (computerX < playerX){
-            //     computerX -= computerEasySpeed;
-            // }
-        })
+
 
         })
     }
+
+    //needed to be moved outside of onload
+    reduceDif.addEventListener("click", function (){
+        if(computerSpeed > 3) {
+            difficultAmount -= 1;
+            computerSpeed -= 1;
+            difficulty.innerHTML(difficultAmount);
+            console.log("you clicked me");
+        }
+    })
 
     function callFunctions(){
         drawEverything();
@@ -96,6 +93,7 @@
 
     function restart(){
         //if ai is within player range width/height then respawn
+        //look up a possile .on contact feature
     }
 
     function movePlayer(direction){
