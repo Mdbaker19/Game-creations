@@ -1,7 +1,4 @@
 (function() {
-//add an up and down movement
-//projectile will switch between spawn at top section and bottom section randomly
-//Make the speed random too
     //canvas is 1000 wide and 500 tall
     let canvas;
 
@@ -15,7 +12,7 @@
 
     let playerPieceX = 10;
 
-    let playerPieceY = 250;
+    let playerPieceY = 225;
 
     let projectile;
 
@@ -48,14 +45,14 @@
 
     function callFunctions() {
         drawEverything();
-        playerPieceY +=3;
+        gravity();
         moveProjectile();
         collision();
     }
 
 
     function drawEverything() {
-        //draw canvas with fill in funciton
+        //draw canvas with fill in function
         fillPieces(0, 0, canvas.width, canvas.height, "bisque");
         //draw player piece
         fillPieces(playerPieceX, playerPieceY, playerWidth, playerHeight, "black");
@@ -71,37 +68,46 @@
         canvasContext.fillRect(leftX, topY, width, height);
     }
 
-    function movePlayer(direction){
-        //switch (direction) {
-            if(direction === "Up") { //add an if case for when piece is at top
-                if (playerPieceY <= 0) {
-                    playerPieceY += 3;
-                } else
-                    playerPieceY -= 100;
+    function gravity (){
+        if(playerPieceY <= 450){
+            playerPieceY += 3;
+        }
+    }
+
+    function movePlayer(direction) {
+        switch (direction){
+            case "Up":
+                if(playerPieceY >= 100){
+                playerPieceY -= 100;
             }
-                 //break;
-            if(direction === "Down") { //add an if case for when piece is at bottom
-                if (playerPieceY >= canvas.height) {
-                    playerPieceY -= 3;
-                }
+                break;
+            case "Down":
+                if(playerPieceY <= 349){
                 playerPieceY += 100;
             }
-                //break;
+                break;
         }
-    //}
+    }
 
     function collision(){
-        if(projectileY === playerPieceY){
-            score = 0;
+        if(projectileX <= 60){
+                if((playerPieceY > projectileY &&
+                playerPieceY < projectileY + projectileHeight) ||
+                    (playerPieceY + playerHeight > projectileY &&
+                        playerPieceY + playerHeight < projectileY + projectileHeight)){
+                    score = 0;
+                    projectileReset();
+                }
+
         }
     }
 
 
+
     function moveProjectile(){
-        projectileX = projectileX + projectileSpeedX // makes it move sporadically not a random set speed like i want * Math.floor(Math.random()*2) + .25);
+        projectileX = projectileX + projectileSpeedX + (Math.floor(Math.random() * 10) - 8);
         if (projectileX <= 0) {
             projectileReset();
-            //do i need a different if case here to increment score???
             score++;
         }
     }
