@@ -28,6 +28,8 @@
 
     let score = 0;
 
+    let reduceDifficulty = document.getElementById("difficulty")//in progress
+
 
     window.onload = function () {
         canvas = document.getElementById("gamecanvas");
