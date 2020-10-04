@@ -1,39 +1,60 @@
 (function () {
 
-    //canvas is 500 wide and 1000 tall
+    //canvas is 500 wide and 900 tall
     let canvas;
     const cvsW = 500;
     const cvsH = 1000;
 
     let canvasContext;
+    let score = 0;
 
-    const leftBumperX = 150;
+
+    function leftBumperHit(){
+        if(ballX > leftBumperX && ballX < leftBumperX + bumperWidth){
+            if(ballY > leftBumperY && ballY < leftBumperY + bumperHeight){
+                ballSpeedY = -ballSpeedY * 1.1;
+                ballSpeedX = -ballSpeedX * 1.1;
+            }
+        }
+    }
+
+    function rightBumperHit(){
+        if(ballX > rightBumperX && ballX < rightBumperX + bumperWidth){
+            if(ballY > rightBumperY && ballY < rightBumperY + bumperHeight){
+                ballSpeedY = -ballSpeedY * 1.1;
+                ballSpeedX = -ballSpeedX * 1.1;
+            }
+        }
+    }
+
+
+    const leftBumperX = 140;
     const leftBumperY = 300;
     const rightBumperX = 350;
     const rightBumperY = 300;
-    const bumperWidth = 30;
+    const bumperWidth = 50;
     const bumperHeight = 30;
 
-    const paddleWidth = 175;
+    const paddleWidth = 135;
     const paddleHeight = 25;
     //leaves a 65px range for ball to fall through
     const paddleMove = 35;
 
     let leftPaddle;
     let leftPaddleX = 0;
-    let leftPaddleY = 900;
+    let leftPaddleY = 800;
 
     let rightPaddle;
     let rightPaddleX = cvsW - paddleWidth;
-    let rightPaddleY = 900;
+    let rightPaddleY = 800;
 
     let ball;
     const ballStartX = 250;
     const ballStartY = 50;
     let ballX = 250;
     let ballY = 50;
-    let ballSpeedX = 0;
-    let ballSpeedY = 5;
+    let ballSpeedX = 2;
+    let ballSpeedY = 7;
 
 
 
@@ -60,7 +81,11 @@
         controlPaddles();
         paddleRetract();
         restartBall();
-        bumperHit();
+        rightBumperHit();
+        leftBumperHit();
+        ballWallBounce();
+        rightPaddleBounce();
+        leftPaddleBounce();
     }
 
     function drawEverything(){
@@ -70,7 +95,7 @@
         colorRectangles(ballX, ballY, 20, 20, "bisque");// for ball
         colorRectangles(leftPaddleX, leftPaddleY, paddleWidth, paddleHeight, "black");
         colorRectangles(rightPaddleX, rightPaddleY, paddleWidth, paddleHeight, "red");
-        //canvas.fillText("score will go here", 250, 100);
+        canvasContext.fillText(score, 250, 100);
     }
 
 
@@ -82,6 +107,37 @@
 
     function moveBall(){
         ballY += ballSpeedY;
+        ballX += ballSpeedX;
+    }
+
+    function ballWallBounce(){
+        if(ballX <= 0){
+            ballSpeedX = -ballSpeedX * 1.1;
+        }
+        if(ballX >= canvas.width - 10){
+            ballSpeedX = -ballSpeedX * 1.1;
+        }
+        if(ballY <= 0){
+            ballSpeedY = -ballSpeedY * 1.1;
+        }
+    }
+
+    function leftPaddleBounce(){
+        if(ballY >= leftPaddleY - paddleHeight/2){
+            if(ballX >= 0 && ballX <= leftPaddleX + paddleWidth){
+                ballSpeedY = -ballSpeedY * 1.1;
+                score++;
+            }
+        }
+    }
+
+    function rightPaddleBounce(){
+        if(ballY >= rightPaddleY - paddleHeight/2){
+            if(ballX <= canvas.width - 10 && ballX >= rightPaddleX){
+                ballSpeedY = -ballSpeedY * 1.1;
+                score++;
+            }
+        }
     }
 
     function controlPaddles(direction){
@@ -104,29 +160,29 @@
     }
 
     function restartBall(){
-        if(ballY > cvsH){
+        if(ballY >= cvsH - 10){
             ballX = ballStartX;
-            ballY = ballSpeedY;
+            ballY = ballStartY;
+            ballSpeedX = 2;
+            ballSpeedY = 7;
+            score = 0;
         }
     }
 
 
-    function bumperHit(){
-        //work on this later, a bit of math to do....
-    }
 
     function paddleRetract(){
-        if(rightPaddleX < 325){
+        if(rightPaddleX < 365){
             rightPaddleX += 12.5;
         } if(leftPaddleX > 0){
             leftPaddleX -= 12.5;
-        }if(rightPaddleY >= 1000){
+        }if(rightPaddleY >= 900){
             rightPaddleY -= paddleMove;
-        }if(leftPaddleY >= 1000) {
+        }if(leftPaddleY >= 900) {
             leftPaddleY -= paddleMove;
-        }if(rightPaddleY <= 800){
+        }if(rightPaddleY <= 700){
             rightPaddleY += paddleMove;
-        }if(leftPaddleY <= 800){
+        }if(leftPaddleY <= 700){
             leftPaddleY += paddleMove;
         }
     }
