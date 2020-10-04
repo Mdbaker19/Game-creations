@@ -101,10 +101,12 @@
         if(ballX >= canvas.width){
             ballX = 485;
             ballY = 240;
+            playerScore += 1;
         }
         if(ballX <= 0){
             ballX = 485;
             ballY = 240;
+            computerScore += 1;
         }
     }
 
@@ -116,8 +118,6 @@
             if (ballY >= computerPaddleY && ballY <= computerPaddleY + paddleHeight) {
                 ballSpeedX = -ballSpeedX
             }
-        } if(ballX >= 1000){
-            playerScore++;
         }
     }
 
@@ -126,8 +126,6 @@
             if (ballY >= playerPaddleY && ballY <= playerPaddleY + paddleHeight) {
                 ballSpeedX = -ballSpeedX;
             }
-        } if(ballX <= 0){
-            computerScore++;
         }
     }
 
