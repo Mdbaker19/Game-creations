@@ -1,5 +1,7 @@
 (function () {
 //How to add a wall in the path
+    //if computer x = wall x then only allow Y movement and if computer y = wall y only allow X movement
+    // so i need to go in and separate an x and y speed movement for the ai
     //How to add a grow or change color when ai is "with in" a range of my piece
     let canvas;
 
@@ -11,6 +13,7 @@
     let difficultAmount = 0;
 
     let computer;
+    let computerColor = "red";
 
     let playerX = 30;
 
@@ -78,7 +81,7 @@
     function drawEverything(){
         colorRect(0, 0, canvas.width, canvas.height, "#bc8f8f");
         colorRect(playerX, playerY, PIECE_WIDTH, PIECE_HEIGHT, "black");//player
-        colorRect(computerX, computerY, PIECE_WIDTH, PIECE_HEIGHT, "red");//ai
+        colorRect(computerX, computerY, PIECE_WIDTH, PIECE_HEIGHT, computerColor);//ai
         colorRect(400, 200, 10, 200, "green");//wall
         canvasContext.fillText(score, 490, 100)
 
@@ -92,23 +95,37 @@
     }
 
     function restart(){
-        //if ai is within player range width/height then respawn
-        //look up a possile .on contact feature
+        if(computerX > playerX && computerX < playerX + PIECE_WIDTH){
+            if(computerY > playerY && computerY < playerY + PIECE_HEIGHT){
+                playerSpawn();
+                computerSpawn();
+                computerColor = "rebeccapurple";
+                score = 0;
+            }
+        }
     }
 
     function movePlayer(direction){
         switch (direction){
             case "Up":
+                if(playerY > 31){
                 playerY -= 30;
+            }
                 break;
             case "Down":
+                if(playerY < canvas.height - 31){
                 playerY += 30;
+            }
                 break;
             case "Left":
+                if(playerX > 31){
                 playerX -= 30;
+            }
                 break;
             case "Right":
+                if(playerX < canvas.width - 31){
                 playerX += 30;
+            }
                 break;
         }
     }
