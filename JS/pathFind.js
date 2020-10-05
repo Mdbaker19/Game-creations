@@ -47,8 +47,11 @@
         if(computerY > goalY){
             computerY -= move;
         }
-        if(computerY < middleWallY - wallHeight && computerX > goalX){
+        if(computerY < middleWallY - wallHeight){
                 computerX -= move;
+                if(computerX > goalX){
+                    computerX -= move;
+                }
         }
     }
 
