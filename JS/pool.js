@@ -9,6 +9,11 @@
     let canvasContext;
     //canvas is 800 by 800
 
+    //could i of done this shorter with an object or something
+
+    //
+
+
     let goalDimensions = 50;
     let goal = "black"
     let topLeftGoal;
@@ -45,9 +50,13 @@
     function callFunctions(){
         drawEverything();
         movePlayer();
+        scratch_BottomLeftForNow();
         //console.log(playerY, playerX);
     }
 
+    // to make this process shorter too? with collectively coloring in balls with an object or something??
+
+    //
 
     function drawEverything(){
         colorIn(0, 0, canvas.width, canvas.height, "bisque");
@@ -61,7 +70,7 @@
         colorIn(bottomLeftX, bottomLeftY, goalDimensions, goalDimensions, goal);
         colorIn(bottomRightX, bottomRightY, goalDimensions, goalDimensions, goal);
 
-        colorIn(playerX, playerY, playerWidth, playerHeight, "green");
+        colorIn(playerX, playerY, playerWidth, playerHeight, "white");
 
     }
 
@@ -95,7 +104,47 @@
         }
     }
 
+    function startPosition(){
+        playerY = 770;
+        playerX = 390;
+    }
+
+    // an object here?? like to make this way shorter and say if a ball of these balls is in the holes, to just
+    // come off the table and to the side rail or center
+    // rather than trying to make a function that checks this condition for each ball
+
+    // higher order functions, objects
+
+    function scratch_BottomLeftForNow (){
+        if(playerX < 50 && playerY > 750){
+            startPosition();
+        }
+    }
 
 
+    // let goal1 = {
+    //     x: 0,
+    //     y: 0,
+    //     held_balls: [],
+    //     function hasBall(){
+    //         if(held_balls.length > 0){
+    //             true;
+    //         } else false;
+    //     },
+    //     function addBall(ball){
+    //         held_balls.push(ball);
+    //     },
+    //     function ballInPerimiter(){
+    //         // check for ball in perimiter
+    //
+    //         if((ball.color !== "white") && (ballX < 50 && ballY < 50)){
+    //             addBall(ballToAdd);
+    //         }
+    //     }
+    // }
+    //
+    // function showBalls(){
+    //     return goal.held_balls
+    // }
 
 })();
