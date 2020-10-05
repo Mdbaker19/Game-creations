@@ -140,6 +140,8 @@
         }
     }
 
+
+    //add a pivot point and a rotation on an axis rather than a straight movement
     function controlPaddles(direction){
         switch (direction){
             case "Up":
