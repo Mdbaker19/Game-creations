@@ -130,6 +130,8 @@
         }
     }
 
+
+    //if within wall x only allow y movement
     function ai(){
         if(computerX > playerX){
             computerX -= computerSpeed;
