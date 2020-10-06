@@ -5,6 +5,7 @@
     let playerY = 770;
     let ballWidth = 20;
     let ballHeight = 20;
+    let move = 20;
     let canvas;
     let canvasContext;
     //canvas is 800 by 800
@@ -78,6 +79,12 @@
         drawEverything();
         movePlayer();
         scratch();
+        collisionBall1();
+        collisionBall2();
+        collisionBall3();
+        collisionBall4();
+        collisionBall5();
+        collisionBall6();
     }
 
     function positionCheck(){
@@ -119,22 +126,22 @@
         switch (direction){
             case "Up":
                 if(playerY > 11){
-                    playerY -= 20;
+                    playerY -= move;
                 }
                 break;
             case "Down":
                 if(playerY < 770){
-                    playerY += 20;
+                    playerY += move;
                 }
                 break;
             case "Left":
                 if(playerX > 11){
-                    playerX -= 20;
+                    playerX -= move;
                 }
                 break;
             case "Right":
                 if(playerX < 770){
-                    playerX += 20;
+                    playerX += move;
                 }
                 break;
         }
@@ -178,6 +185,65 @@
         }
     }
 
+    // function moveBallsFromCollision(//take in something here to apply to each ball){
+    //     ball...x -= move;
+    //     ball...y -= move;
+    // }
+
+    function collisionBall1(){
+        if(ball1.x > ballWidth/2 && ball1.x !== canvas.width - ballWidth && ball1.y > ballHeight/2 && ball1.y !== canvas.height - ballHeight){
+            if ((playerY >= ball1.y - ballHeight && playerY <= ball1.y + ballHeight) && (playerX >= ball1.x - ballWidth && playerX <= ball1.x + ballWidth)) {
+                ball1.x -= move;
+                ball1.y -= move;
+                //moveBallsFromCollision();
+            }
+        }
+    }
+    function collisionBall2(){
+        if(ball2.x > ballWidth/2 && ball2.x !== canvas.width - ballWidth && ball2.y > ballHeight/2 && ball2.y !== canvas.height - ballHeight){
+            if ((playerY >= ball2.y - ballHeight && playerY <= ball2.y + ballHeight) && (playerX >= ball2.x - ballWidth && playerX <= ball2.x + ballWidth)) {
+                ball2.x -= move
+                ball2.y -= move;
+                //moveBallsFromCollision();
+            }
+        }
+    }
+    function collisionBall3(){
+        if(ball3.x > ballWidth/2 && ball3.x !== canvas.width - ballWidth && ball3.y > ballHeight/2 && ball3.y !== canvas.height - ballHeight){
+            if ((playerY >= ball3.y - ballHeight && playerY <= ball3.y + ballHeight) && (playerX >= ball3.x - ballWidth && playerX <= ball3.x + ballWidth)) {
+                ball3.x -= move;
+                ball3.y -= move;
+                //moveBallsFromCollision();
+            }
+        }
+    }
+    function collisionBall4(){
+        if(ball4.x > ballWidth/2 && ball4.x !== canvas.width - ballWidth && ball4.y > ballHeight/2 && ball4.y !== canvas.height - ballHeight){
+            if ((playerY >= ball4.y - ballHeight && playerY <= ball4.y + ballHeight) && (playerX >= ball4.x - ballWidth && playerX <= ball4.x + ballWidth)) {
+                ball4.x -= move;
+                ball4.y -= move;
+                //moveBallsFromCollision();
+            }
+        }
+    }
+    function collisionBall5(){
+        if(ball5.x > ballWidth/2 && ball5.x !== canvas.width - ballWidth && ball5.y > ballHeight/2 && ball5.y !== canvas.height - ballHeight){
+            if ((playerY >= ball5.y - ballHeight && playerY <= ball5.y + ballHeight) && (playerX >= ball5.x - ballWidth && playerX <= ball5.x + ballWidth)) {
+                ball5.x -= move
+                ball5.y -= move;
+                //moveBallsFromCollision();
+            }
+        }
+    }
+    function collisionBall6(){
+        if(ball6.x > ballWidth/2 && ball6.x !== canvas.width - ballWidth && ball6.y > ballHeight/2 && ball6.y !== canvas.height - ballHeight){
+            if ((playerY >= ball6.y - ballHeight && playerY <= ball6.y + ballHeight) && (playerX >= ball6.x - ballWidth && playerX <= ball6.x + ballWidth)) {
+                ball6.x -= move;
+                ball6.y -= move;
+                //moveBallsFromCollision();
+            }
+        }
+    }
 
     // let goal1 = {
     //     x: 0,
