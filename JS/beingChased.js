@@ -161,58 +161,58 @@
     }
 
 
-    function ai(){
-        if(computerX + PIECE_WIDTH > wall.x && playerY + PIECE_WIDTH > wall.x){
-            if(computerX > playerX){
-                computerX -= computerSpeed;
-                return;
-            }
-            if (computerX < playerX){
-                computerX += computerSpeed;
-                return;
-            }
-        }
-        if(computerY > wall.y && computerY < wall.y + wall.height){
-            if (computerY > playerY){
-                computerY -= computerSpeed;
-                return;
-            }
-            if (computerY < playerY){
-                computerY += computerSpeed;
-                return;
-            }
-        }
-        if(computerY < wall.y - PIECE_HEIGHT|| computerY > wall.y + wall.height){
-            if(computerX > playerX){
-                computerX -= computerSpeed;
-                return;
-            }
-            if (computerX < playerX){
-                computerX += computerSpeed;
-                return;
-            }
-        }
-        if(computerX > wall.x && computerX < wall.x + wall.width){
-            if(computerX > playerX){
-                computerX -= computerSpeed;
-                return;
-            }
-            if (computerX < playerX){
-                computerX += computerSpeed;
-                return;
-            }
-        }
-        if(computerX < wall.x || computerX > wall.x + wall.width){
-            if (computerY > playerY){
-                computerY -= computerSpeed;
-                return;
-            }
-            if (computerY < playerY){
-                computerY += computerSpeed;
-                return;
-            }
-        }
-    }
+    // function ai(){
+    //     if(computerX + PIECE_WIDTH > wall.x && playerY + PIECE_WIDTH > wall.x){
+    //         if(computerX > playerX){
+    //             computerX -= computerSpeed;
+    //             return;
+    //         }
+    //         if (computerX < playerX){
+    //             computerX += computerSpeed;
+    //             return;
+    //         }
+    //     }
+    //     if(computerY > wall.y && computerY < wall.y + wall.height){
+    //         if (computerY > playerY){
+    //             computerY -= computerSpeed;
+    //             return;
+    //         }
+    //         if (computerY < playerY){
+    //             computerY += computerSpeed;
+    //             return;
+    //         }
+    //     }
+    //     if(computerY < wall.y - PIECE_HEIGHT|| computerY > wall.y + wall.height){
+    //         if(computerX > playerX){
+    //             computerX -= computerSpeed;
+    //             return;
+    //         }
+    //         if (computerX < playerX){
+    //             computerX += computerSpeed;
+    //             return;
+    //         }
+    //     }
+    //     if(computerX > wall.x && computerX < wall.x + wall.width){
+    //         if(computerX > playerX){
+    //             computerX -= computerSpeed;
+    //             return;
+    //         }
+    //         if (computerX < playerX){
+    //             computerX += computerSpeed;
+    //             return;
+    //         }
+    //     }
+    //     if(computerX < wall.x || computerX > wall.x + wall.width){
+    //         if (computerY > playerY){
+    //             computerY -= computerSpeed;
+    //             return;
+    //         }
+    //         if (computerY < playerY){
+    //             computerY += computerSpeed;
+    //             return;
+    //         }
+    //     }
+    // }
 
     // function ai(){
     //     if(computerX > playerX){
@@ -225,6 +225,27 @@
     //         computerX += computerSpeed;
     //     }
     // }
+
+    function ai(){
+        if (computerY > wall.y && computerY < wall.y + wall.height) {
+            computerY -= computerSpeed;
+        }else if (computerX > wall.x && computerX < wall.x + wall.width) {
+            computerX -= computerSpeed;
+        }else {
+            if (computerX > playerX) {
+                computerX -= computerSpeed;
+            }
+            if (computerX < playerX) {
+                computerX += computerSpeed;
+            }
+            if (computerY > playerY) {
+                computerY -= computerSpeed;
+            }
+            if (computerY < playerY) {
+                computerY += computerSpeed;
+            }
+        }
+    }
 
 
 })();
