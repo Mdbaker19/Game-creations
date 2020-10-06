@@ -20,11 +20,26 @@
     let playerY = 30;
 
     let computerX = 30;
-    let computerEasySpeed = 2;
-    let computerSpeed = 5;
+    let computerEasySpeed = 5;
+    let computerSpeed = 10;
 
     let computerY = 30;
     let computerYSpeed;
+
+    let wall = {
+        x: 400,
+        y: 200,
+        width: 10,
+        height: 400,
+        color: "green"
+    };
+
+    let goal = {
+        x: 950,
+        y: 375,
+        dimension: 50,
+        color: "grey"
+    };
 
     const PIECE_HEIGHT = 30;
     const PIECE_WIDTH = 30;
@@ -48,8 +63,8 @@
         computerSpawn();
         playerSpawn();
 
-        const fps = 30;
-        setInterval(callFunctions, 1000/fps);
+        setInterval(callFunctions, 50);
+        setInterval(logPosition, 500);
 
         window.addEventListener("keydown", function (evt){
             const direction = evt.key.replace("Arrow", "");
@@ -70,19 +85,26 @@
         }
     })
 
+    function logPosition(){
+        //console.log(playerX, playerY);
+        console.log(computerX, computerY);
+    }
+
     function callFunctions(){
         drawEverything();
         movePlayer();
         ai();
         restart();
-        score++;
+        enteredGoal();
     }
 
     function drawEverything(){
-        colorRect(0, 0, canvas.width, canvas.height, "#bc8f8f");
+        colorRect(0, 0, canvas.width, canvas.height, "#ba8989");
+        colorRect(0, 200, canvas.width, 400, "#94d87c")
         colorRect(playerX, playerY, PIECE_WIDTH, PIECE_HEIGHT, "black");//player
         colorRect(computerX, computerY, PIECE_WIDTH, PIECE_HEIGHT, computerColor);//ai
-        colorRect(400, 200, 10, 200, "green");//wall
+        colorRect(wall.x, wall.y, wall.width, wall.height, wall.color);//wall
+        colorRect(goal.x, goal.y, goal.dimension, goal.dimension, goal.color);
         canvasContext.fillText(score, 490, 100)
 
     }
@@ -130,21 +152,79 @@
         }
     }
 
-
-    //if within wall x only allow y movement
-    function ai(){
-        if(computerX > playerX){
-            computerX -= computerSpeed;
-        } if (computerY > playerY){
-            computerY -= computerSpeed;
-        } if (computerY < playerY){
-            computerY += computerSpeed;
-        } if (computerX < playerX){
-            computerX += computerSpeed;
+    function enteredGoal(){
+        if(playerX >= goal.x && (playerY > goal.y && playerY < goal.y + goal.dimension)){
+            playerSpawn();
+            computerSpawn();
+            score++;
         }
     }
 
 
+    function ai(){
+        if(computerX + PIECE_WIDTH > wall.x && playerY + PIECE_WIDTH > wall.x){
+            if(computerX > playerX){
+                computerX -= computerSpeed;
+                return;
+            }
+            if (computerX < playerX){
+                computerX += computerSpeed;
+                return;
+            }
+        }
+        if(computerY > wall.y && computerY < wall.y + wall.height){
+            if (computerY > playerY){
+                computerY -= computerSpeed;
+                return;
+            }
+            if (computerY < playerY){
+                computerY += computerSpeed;
+                return;
+            }
+        }
+        if(computerY < wall.y - PIECE_HEIGHT|| computerY > wall.y + wall.height){
+            if(computerX > playerX){
+                computerX -= computerSpeed;
+                return;
+            }
+            if (computerX < playerX){
+                computerX += computerSpeed;
+                return;
+            }
+        }
+        if(computerX > wall.x && computerX < wall.x + wall.width){
+            if(computerX > playerX){
+                computerX -= computerSpeed;
+                return;
+            }
+            if (computerX < playerX){
+                computerX += computerSpeed;
+                return;
+            }
+        }
+        if(computerX < wall.x || computerX > wall.x + wall.width){
+            if (computerY > playerY){
+                computerY -= computerSpeed;
+                return;
+            }
+            if (computerY < playerY){
+                computerY += computerSpeed;
+                return;
+            }
+        }
+    }
+
+    // function ai(){
+    //     if(computerX > playerX){
+    //         computerX -= computerSpeed;
+    //     } if (computerY > playerY){
+    //         computerY -= computerSpeed;
+    //     } if (computerY < playerY){
+    //         computerY += computerSpeed;
+    //     } if (computerX < playerX){
+    //         computerX += computerSpeed;
+    //     }
+    // }
 
 
 })();
