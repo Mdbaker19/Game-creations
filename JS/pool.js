@@ -125,22 +125,22 @@
     function movePlayer(direction){
         switch (direction){
             case "Up":
-                if(playerY > 11){
+                if(playerY > ballWidth/2){
                     playerY -= move;
                 }
                 break;
             case "Down":
-                if(playerY < 770){
+                if(playerY < canvas.height - (ballHeight + ballHeight/2)){
                     playerY += move;
                 }
                 break;
             case "Left":
-                if(playerX > 11){
+                if(playerX > ballWidth/2){
                     playerX -= move;
                 }
                 break;
             case "Right":
-                if(playerX < 770){
+                if(playerX < canvas.width - (ballWidth + ballWidth/2)){
                     playerX += move;
                 }
                 break;
