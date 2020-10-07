@@ -48,12 +48,63 @@
             y: 420,
             height: 100
         },
+        move: function (direction){
+            switch (direction){
+                //do not need case "ArrowUp" with the replace arrow with ""
+                case "Up":
+                    this.head.y -= 5;
+                    this.neck.y -= 5;
+                    this.upperBody.y -= 5;
+                    this.lowerBody.y -= 5;
+                    this.leftLeg.y -= 5;
+                    this.rightLeg.y -= 5;
+                    this.rightArm.y -= 5;
+                    this.leftArm.y -= 5;
+                    break;
+                case "Down":
+                    this.head.y += 5;
+                    this.neck.y += 5;
+                    this.upperBody.y += 5;
+                    this.lowerBody.y += 5;
+                    this.leftLeg.y += 5;
+                    this.rightLeg.y += 5;
+                    this.rightArm.y += 5;
+                    this.leftArm.y += 5;
+                    break;
+                case "Left":
+                    this.head.x -= 5;
+                    this.neck.x -= 5;
+                    this.upperBody.x -= 5;
+                    this.lowerBody.yx -= 5;
+                    this.leftLeg.x -= 5;
+                    this.rightLeg.x -= 5;
+                    this.rightArm.x -= 5;
+                    this.leftArm.x -= 5;
+                    break;
+                case "Right":
+                    this.head.x += 5;
+                    this.neck.x += 5;
+                    this.upperBody.x += 5;
+                    this.lowerBody.x += 5;
+                    this.leftLeg.x += 5;
+                    this.rightLeg.x += 5;
+                    this.rightArm.x += 5;
+                    this.leftArm.x += 5;
+                    break;
+            }
+        }
     }
 
     window.onload = function startGame(){
         canvas = document.getElementById("gamecanvas");
         ctx = canvas.getContext("2d");
         setInterval(callFunctions, 100);
+
+        window.addEventListener("keydown", function(evt){
+            const direction = evt.key.replace("Arrow", "");
+            //console.log(direction);
+            player = player.move(direction);
+        })
     }
 
     function callFunctions(){
@@ -76,5 +127,6 @@
         ctx.fillStyle = color;
         ctx.fillRect(leftX, topY, width, height);
     }
+
 
 })();
