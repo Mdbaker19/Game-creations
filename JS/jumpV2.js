@@ -48,51 +48,6 @@
             y: 420,
             height: 100
         },
-        move: function (direction){
-            switch (direction){
-                //do not need case "ArrowUp" with the replace arrow with ""
-                case "Up":
-                    this.head.y -= 5;
-                    this.neck.y -= 5;
-                    this.upperBody.y -= 5;
-                    this.lowerBody.y -= 5;
-                    this.leftLeg.y -= 5;
-                    this.rightLeg.y -= 5;
-                    this.rightArm.y -= 5;
-                    this.leftArm.y -= 5;
-                    break;
-                case "Down":
-                    this.head.y += 5;
-                    this.neck.y += 5;
-                    this.upperBody.y += 5;
-                    this.lowerBody.y += 5;
-                    this.leftLeg.y += 5;
-                    this.rightLeg.y += 5;
-                    this.rightArm.y += 5;
-                    this.leftArm.y += 5;
-                    break;
-                case "Left":
-                    this.head.x -= 5;
-                    this.neck.x -= 5;
-                    this.upperBody.x -= 5;
-                    this.lowerBody.yx -= 5;
-                    this.leftLeg.x -= 5;
-                    this.rightLeg.x -= 5;
-                    this.rightArm.x -= 5;
-                    this.leftArm.x -= 5;
-                    break;
-                case "Right":
-                    this.head.x += 5;
-                    this.neck.x += 5;
-                    this.upperBody.x += 5;
-                    this.lowerBody.x += 5;
-                    this.leftLeg.x += 5;
-                    this.rightLeg.x += 5;
-                    this.rightArm.x += 5;
-                    this.leftArm.x += 5;
-                    break;
-            }
-        }
     }
 
     window.onload = function startGame(){
@@ -103,12 +58,59 @@
         window.addEventListener("keydown", function(evt){
             const direction = evt.key.replace("Arrow", "");
             //console.log(direction);
-            player = player.move(direction);
+            player = move(direction);
         })
     }
 
     function callFunctions(){
         drawEverything();
+        move();
+    }
+
+    function move (direction){
+        switch (direction){
+            //do not need case "ArrowUp" with the replace arrow with ""
+            case "Up":
+                player.head.y -= 5;
+                player.neck.y -= 5;
+                player.upperBody.y -= 5;
+                player.lowerBody.y -= 5;
+                player.leftLeg.y -= 5;
+                player.rightLeg.y -= 5;
+                player.rightArm.y -= 5;
+                player.leftArm.y -= 5;
+                break;
+            case "Down":
+                player.head.y += 5;
+                player.neck.y += 5;
+                player.upperBody.y += 5;
+                player.lowerBody.y += 5;
+                player.leftLeg.y += 5;
+                player.rightLeg.y += 5;
+                player.rightArm.y += 5;
+                player.leftArm.y += 5;
+                break;
+            case "Left":
+                player.head.x -= 5;
+                player.neck.x -= 5;
+                player.upperBody.x -= 5;
+                player.lowerBody.yx -= 5;
+                player.leftLeg.x -= 5;
+                player.rightLeg.x -= 5;
+                player.rightArm.x -= 5;
+                player.leftArm.x -= 5;
+                break;
+            case "Right":
+                player.head.x += 5;
+                player.neck.x += 5;
+                player.upperBody.x += 5;
+                player.lowerBody.x += 5;
+                player.leftLeg.x += 5;
+                player.rightLeg.x += 5;
+                player.rightArm.x += 5;
+                player.leftArm.x += 5;
+                break;
+        }
     }
 
     function drawEverything(){
