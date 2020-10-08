@@ -6,3 +6,15 @@ body{
     display: flex;
     justify-content: center;
 }
+
+#restart{
+    background-color: darkslategray;
+    color: bisque;
+    cursor: pointer;
+    border-radius: 25%;
+}
+
+.restartButton.hover{
+    background-color: bisque;
+    color: darkslategray;
+}

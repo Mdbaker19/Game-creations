@@ -33,6 +33,11 @@
             }
         })
     }
+    // does not work right now
+    // let restart = document.getElementById("restart");
+    // restart.addEventListener("click", function startOver(){
+    //     load();
+    // })
 
     function load(){
         draw();
