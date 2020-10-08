@@ -2,6 +2,7 @@
     let cvs;
     let ctx;
     const dimensions = 50;
+    let alienDimension = 50;
     const alien = {
         x: 1000,
         y: 0,
@@ -27,7 +28,8 @@
             player.shoot();
             if(alien.x > player.x - dimensions/2 && alien.x < player.x +dimensions/2){
                 alien.x = cvs.width;
-                player.score++
+                player.score++;
+                alienDimension = 50;
             }
         })
     }
@@ -35,11 +37,12 @@
     function load(){
         draw();
         moveAlien();
+        gameOver();
     }
 
     function draw(){
         fill(0,0, cvs.width, cvs.height, "#4c1070");//canvas
-        fill(alien.x, alien.y, dimensions, dimensions, "black");//alien
+        fill(alien.x, alien.y, alienDimension, alienDimension, "black");//alien
         fill(player.x, player.y, dimensions, dimensions, "#66dbca"); //player
         ctx.fillText("successful hits: " + player.score, 500, 200);//score
         ctx.fillText("aliens that survived: " + alien.score, 500, 210);//alien score
@@ -54,8 +57,16 @@
         if(alien.x <= -50){
             alien.x = cvs.width;
             alien.score++;
+            alienDimension *= 1.2;
         }
         alien.x -= alien.speed;
+    }
+
+    function gameOver(){
+        if(alienDimension >= cvs.height){
+            fill(0,0,cvs.width, cvs.height, "red");
+            ctx.fillText("GAME OVER!!!!!!!", 500, 250).fillStyle("black");//not working
+        }
     }
 
 })();
