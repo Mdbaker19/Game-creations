@@ -1,0 +1,9 @@
+#bodyColor {
+    background-color: black;
+}
+
+.first {
+    display: flex;
+    justify-content: center;
+    color: floralwhite;
+}
