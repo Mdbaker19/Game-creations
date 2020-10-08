@@ -10,6 +10,7 @@
     let player1;
 
     let score = 0;
+    let computerScore = 0;
     let difficultAmount = 0;
 
     let computer;
@@ -22,6 +23,7 @@
     let computerX = 30;
     let computerEasySpeed = 5;
     let computerSpeed = 10;
+    let computerWallSpeed = 10;
 
     let computerY = 30;
     let computerYSpeed;
@@ -41,8 +43,7 @@
         color: "grey"
     };
 
-    const PIECE_HEIGHT = 30;
-    const PIECE_WIDTH = 30;
+    const dimension = 30;
 
     const reduceDif = document.getElementById("difficulty");//in progress
     let difficulty = document.getElementById("amount");
@@ -69,9 +70,6 @@
         window.addEventListener("keydown", function (evt){
             const direction = evt.key.replace("Arrow", "");
             player1 = movePlayer(direction);
-
-
-
         })
     }
 
@@ -86,7 +84,7 @@
     })
 
     function logPosition(){
-        //console.log(playerX, playerY);
+        console.log(playerX, playerY);
         console.log(computerX, computerY);
     }
 
@@ -100,12 +98,14 @@
 
     function drawEverything(){
         colorRect(0, 0, canvas.width, canvas.height, "#ba8989");
-        colorRect(0, 200, canvas.width, 400, "#94d87c")
-        colorRect(playerX, playerY, PIECE_WIDTH, PIECE_HEIGHT, "black");//player
-        colorRect(computerX, computerY, PIECE_WIDTH, PIECE_HEIGHT, computerColor);//ai
+        colorRect(0, 200, canvas.width, 400, "#52c22b")
+        colorRect(playerX, playerY, dimension, dimension, "black");//player
+        colorRect(computerX, computerY, dimension, dimension, computerColor);//ai
         colorRect(wall.x, wall.y, wall.width, wall.height, wall.color);//wall
         colorRect(goal.x, goal.y, goal.dimension, goal.dimension, goal.color);
         canvasContext.fillText(score, 490, 100)
+        canvasContext.fillText("GOAL", goal.x + 10, goal.y - 5);
+        canvasContext.fillText(computerScore, 500, 850); // why doesnt this work???
 
     }
 
@@ -117,12 +117,13 @@
     }
 
     function restart(){
-        if(computerX > playerX && computerX < playerX + PIECE_WIDTH){
-            if(computerY > playerY && computerY < playerY + PIECE_HEIGHT){
+        if(computerX >= playerX && computerX <= playerX + dimension){
+            if(computerY >= playerY && computerY <= playerY + dimension){
                 playerSpawn();
                 computerSpawn();
                 computerColor = "rebeccapurple";
                 score = 0;
+                computerScore++;
             }
         }
     }
@@ -160,60 +161,6 @@
         }
     }
 
-
-    // function ai(){
-    //     if(computerX + PIECE_WIDTH > wall.x && playerY + PIECE_WIDTH > wall.x){
-    //         if(computerX > playerX){
-    //             computerX -= computerSpeed;
-    //             return;
-    //         }
-    //         if (computerX < playerX){
-    //             computerX += computerSpeed;
-    //             return;
-    //         }
-    //     }
-    //     if(computerY > wall.y && computerY < wall.y + wall.height){
-    //         if (computerY > playerY){
-    //             computerY -= computerSpeed;
-    //             return;
-    //         }
-    //         if (computerY < playerY){
-    //             computerY += computerSpeed;
-    //             return;
-    //         }
-    //     }
-    //     if(computerY < wall.y - PIECE_HEIGHT|| computerY > wall.y + wall.height){
-    //         if(computerX > playerX){
-    //             computerX -= computerSpeed;
-    //             return;
-    //         }
-    //         if (computerX < playerX){
-    //             computerX += computerSpeed;
-    //             return;
-    //         }
-    //     }
-    //     if(computerX > wall.x && computerX < wall.x + wall.width){
-    //         if(computerX > playerX){
-    //             computerX -= computerSpeed;
-    //             return;
-    //         }
-    //         if (computerX < playerX){
-    //             computerX += computerSpeed;
-    //             return;
-    //         }
-    //     }
-    //     if(computerX < wall.x || computerX > wall.x + wall.width){
-    //         if (computerY > playerY){
-    //             computerY -= computerSpeed;
-    //             return;
-    //         }
-    //         if (computerY < playerY){
-    //             computerY += computerSpeed;
-    //             return;
-    //         }
-    //     }
-    // }
-
     // function ai(){
     //     if(computerX > playerX){
     //         computerX -= computerSpeed;
@@ -226,26 +173,63 @@
     //     }
     // }
 
-    function ai(){
-        if (computerY > wall.y && computerY < wall.y + wall.height) {
-            computerY -= computerSpeed;
-        }else if (computerX > wall.x && computerX < wall.x + wall.width) {
-            computerX -= computerSpeed;
-        }else {
-            if (computerX > playerX) {
+    function ai(){//will prioritize moving around wall but still goes through
+        if(computerX < canvas.width - dimension && computerX > 0 && computerY > dimension && computerY < canvas.height - dimension){
+            //if computer is in the bottom half section of the wall go down(faster)
+            if (computerY > wall.y + wall.height / 2) {
+                computerY += computerWallSpeed;
+                // computerSpeed = 0;
+                if(computerY < playerY){
+                    computerWallSpeed = 0;
+                    computerY += computerSpeed;
+                }
+            }
+            //if computer is in top half of wall go up
+            if (computerY < wall.y + wall.height / 2) {
+                computerY -= computerWallSpeed;
+                // computerSpeed = 0;
+                if(computerY > playerY){
+                    computerWallSpeed = 0;
+                    computerY -= computerSpeed;
+                }
+            }
+            // if computer is on right side of wall go right
+            if(computerX > wall.x + wall.width/2){
+                computerX += computerWallSpeed;
+                //computerSpeed = 0;
+            }
+            //if computer is on left side of wall go left
+            if(computerX < wall.x + wall.width/2){
+                computerX -= computerWallSpeed;
+                //computerSpeed = 0;
+            }
+            // to move toward player x
+            if(computerX > playerX){
+                computerWallSpeed = 0;
                 computerX -= computerSpeed;
             }
-            if (computerX < playerX) {
+            if(computerX < playerX){
+                computerWallSpeed = 0;
                 computerX += computerSpeed;
             }
-            if (computerY > playerY) {
+            // to move toward player Y
+            if(computerY > playerY){
+                computerWallSpeed = 0;
                 computerY -= computerSpeed;
             }
-            if (computerY < playerY) {
+            if(computerY < playerY){
+                computerWallSpeed = 0;
                 computerY += computerSpeed;
             }
         }
-    }
 
+    }
+    //
+    // function ai(){
+    //     do{
+    //
+    //
+    //     } while(playerX < wall.x && computerX > wall.x + wall.width)
+    // }
 
 })();
