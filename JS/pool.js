@@ -5,6 +5,7 @@
     let playerY = 770;
     let ballWidth = 20;
     let ballHeight = 20;
+    let velocity = 1;
     let move = 20;
     let canvas;
     let canvasContext;
