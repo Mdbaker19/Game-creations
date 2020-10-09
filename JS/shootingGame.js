@@ -1,8 +1,12 @@
 (function (){
+    //game over black text
+    // restart game button
+    // bullets being added
     let cvs;
     let ctx;
     const dimensions = 50;
     let alienDimension = 50;
+    const ammoToBePushed = 1;
     const alien = {
         x: 1000,
         y: 0,
@@ -32,15 +36,10 @@
         }
     }
     const bullets = {
-        bulletsArray: [1]//will push items in if a successful jump grab is done
-
-        if(playerx and y are within bullet){
-            push a bullet into bulletsArray
-    }
-
+        bulletsArray: [],//will push items in if a successful jump grab is done
         bullet: {
             x: 800,
-            y: 470,
+            y: 425,
             speed: 20,
             appear: function drawBullet(){
                 fill(this.x, this.y, 25, 25, "grey");
@@ -53,9 +52,11 @@
         cvs = document.getElementById("gamecanvas");
         ctx = cvs.getContext("2d");
         setInterval(load, 50);
+        setInterval(logPositions, 500);
 
         window.addEventListener("mousedown", function fire(){
             console.log("FIRE!");
+            bullets.bulletsArray.pop();
             player.shoot();
             if(alien.x > player.x - dimensions/2 && alien.x < player.x +dimensions/2){
                 alien.x = cvs.width;
@@ -85,6 +86,8 @@
         moveAlien();
         gameOver();
         player.gravity();
+        bullets.bullet.appear();
+        moveBullet();
     }
 
     function draw(){
@@ -93,6 +96,7 @@
         fill(player.x, player.y, dimensions, dimensions, "#66dbca"); //player
         ctx.fillText("successful hits: " + player.score, 500, 200);//score
         ctx.fillText("aliens that survived: " + alien.score, 500, 210);//alien score
+        ctx.fillText("bullets left: " + bullets.bulletsArray.length, 500, 220);
     }
 
     function fill(leftX, topY, width, height, color){
@@ -107,6 +111,25 @@
             alienDimension *= 1.2;
         }
         alien.x -= alien.speed;
+    }
+
+    function moveBullet(){
+        if(bullets.bullet.x < 0) {
+            bullets.bullet.x = 800;
+        }else {
+            bullets.bullet.x -= bullets.bullet.speed;
+        }
+        if(bullets.bullet.y <= player.y && (bullets.bullet.x > player.x && bullets.bullet.x < player.x + dimensions)){
+            console.log("bullet added!!")
+            bullets.bulletsArray.push(ammoToBePushed);
+        }
+    }
+
+    function logPositions(){
+        console.log("bullet is at x pos: " + bullets.bullet.x);
+        console.log("player is at x pos: " + player.x);
+        console.log("bullet is at Y pos: " + bullets.bullet.y);
+        console.log("player is at Y pos: " + player.y);
     }
 
     function gameOver(){
