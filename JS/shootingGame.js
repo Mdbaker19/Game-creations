@@ -8,14 +8,31 @@
         y: 0,
         speed: 20,
         score: 0
-    }
+    };
     const player = {
         x: 100,
         y: 450,
         score: 0,
         shoot: function fire(){
-            fill(this.x + dimensions/4, 0, dimensions/2, cvs.height-dimensions * 2, "#a44f19");
+            if(bullets.bulletsArray.length >= 1){
+                fill(this.x + dimensions / 4, 0, dimensions / 2, cvs.height - dimensions * 2, "#a44f19");
+            }
+        },
+        jump: function jumpUp(direction){
+            switch (direction) {
+                case "Up":
+                    this.y -= 50;
+                    break;
+            }
+        },
+        gravity: function fallBackDown(){
+            if(this.y < 450){
+                this.y += 50;
+            }
         }
+    }
+    const bullets = {
+        bulletsArray: [1]//will push items in if a successful jump grab is done
     }
 
     window.onload = function start(){
@@ -31,18 +48,29 @@
                 player.score++;
                 alienDimension = 50;
             }
+        });
+
+        window.addEventListener("keydown", function jump(evt){
+            const direction = evt.key.replace("Arrow", "");
+            player.jump(direction);
         })
     }
     // does not work right now
     // let restart = document.getElementById("restart");
     // restart.addEventListener("click", function startOver(){
-    //     load();
+    //     reLoad();
     // })
+    //
+    // function reLoad(){
+    //     draw();
+    //     moveAlien();
+    // }
 
     function load(){
         draw();
         moveAlien();
         gameOver();
+        player.gravity();
     }
 
     function draw(){
