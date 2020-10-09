@@ -6,7 +6,7 @@
     const alien = {
         x: 1000,
         y: 0,
-        speed: 20,
+        speed: 15,
         score: 0
     };
     const player = {
@@ -33,6 +33,20 @@
     }
     const bullets = {
         bulletsArray: [1]//will push items in if a successful jump grab is done
+
+        if(playerx and y are within bullet){
+            push a bullet into bulletsArray
+    }
+
+        bullet: {
+            x: 800,
+            y: 470,
+            speed: 20,
+            appear: function drawBullet(){
+                fill(this.x, this.y, 25, 25, "grey");
+            }
+        }
+
     }
 
     window.onload = function start(){
