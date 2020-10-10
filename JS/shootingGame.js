@@ -1,6 +1,5 @@
 (function (){
-    // adjust the actual bullet fill positions to hit the alien backside
-    // draw of laser is a little buggy
+    // draw of laser is a little buggy, sometimes does not animate
     let cvs;
     let ctx;
     let gameOverText = document.getElementById("ifGameOver");
@@ -19,6 +18,8 @@
         score: 0,
         shoot: function fire(){
             if(ammo.ammoArray.length >= 1){
+                //the height and topY is set to be drawn from the top of the canvas down to just above the player
+                // leftX is that so it is set to be center with the given width of half the player
                 fill(this.x + dimensions / 4, 0, dimensions / 2, cvs.height - dimensions * 2, "#a44f19");
             }
         },
@@ -51,15 +52,15 @@
         cvs = document.getElementById("gamecanvas");
         ctx = cvs.getContext("2d");
         setInterval(load, 50);
-        //setInterval(logPositions, 10);
+        //setInterval(logPositions, 50);
 
         window.addEventListener("mousedown", function fire(){
             ammo.ammoArray.pop();
             player.shoot();
-            if((alien.x > player.x - alienDimension/2 && alien.x < player.x + alienDimension/2) && ammo.ammoArray.length > 0){
+            if(alien.x + alienDimension > 137.5 && alien.x < 112.5){
                 alien.x = cvs.width;
                 player.score++;
-                alienDimension = 50;
+                alienDimension = dimensions;
             }
         });
 
@@ -78,11 +79,12 @@
         } else{
             return false;
         }
-    })
+    });
     function reLoad(){
         load();
         ammo.ammoArray.length = 0;
     }
+
     function load(){
         draw();
         moveAlien();
@@ -107,7 +109,7 @@
     }
 
     function moveAlien(){
-        if(alien.x <= -50){
+        if(alien.x <= -alienDimension){
             alien.x = cvs.width;
             alien.score++;
             alienDimension *= 1.2;
@@ -124,16 +126,18 @@
         }
         if((ammo.bullet.x > player.x - ammo.bullet.size && ammo.bullet.x < player.x + dimensions) && ammo.bullet.y > player.y){
             ammo.ammoArray.push(ammoAdd);
+            ammo.ammoArray.push(ammoAdd);
+            ammo.ammoArray.push(ammoAdd);
             ammo.bullet.x = 800;
             //ammo.bullet.appear(); why does this not work
         }
     }
 
     function logPositions(){
-        //console.log("bullet is at x pos: " + ammo.bullet.x); 100 to 150 to grab
-        //console.log("player is at x pos: " + player.x); 100 at stand still
-        //console.log("bullet is at Y pos: " + ammo.bullet.y); 425 all the time
-        //console.log("player is at Y pos: " + player.y); at 450 during stand still, 400 at peak jump
+        //console.log("bullet is at x pos: " + ammo.bullet.x);
+        //console.log("player is at x pos: " + player.x);
+        //console.log("bullet is at Y pos: " + ammo.bullet.y);
+        //console.log("player is at Y pos: " + player.y);
     }
 
     let isGameOver = false;
@@ -147,5 +151,4 @@
             isGameOver = true;
         }
     }
-
 })();
