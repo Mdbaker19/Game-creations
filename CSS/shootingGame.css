@@ -14,7 +14,7 @@ body{
     border-radius: 25%;
 }
 
-.restartButton.hover{
+button.hover{
     background-color: bisque;
     color: darkslategray;
 }
