@@ -127,7 +127,6 @@
         if((ammo.bullet.x > player.x - ammo.bullet.size && ammo.bullet.x < player.x + dimensions) && ammo.bullet.y > player.y){
             ammo.ammoArray.push(ammoAdd);
             ammo.ammoArray.push(ammoAdd);
-            ammo.ammoArray.push(ammoAdd);
             ammo.bullet.x = 800;
             //ammo.bullet.appear(); why does this not work
         }
@@ -143,7 +142,7 @@
     let isGameOver = false;
     function gameOver(){
         if(alienDimension >= cvs.height){
-            fill(0,0,cvs.width, cvs.height, "red");
+            fill(0,0, cvs.width, cvs.height, "#530909");
             ammo.bullet.x = 1000;
             alien.score = 0;
             player.score = 0;
@@ -151,4 +150,13 @@
             isGameOver = true;
         }
     }
+    console.log("The alien will move across the screen and will grow 20% the next time it passes" + "\n" +
+        "if it is not shot down, if you fail to shoot down the alien before it" + "\n" +
+        "grows to the size of the canvas the game will end and you will need to start" + "\n" +
+        "a new game by clicking the button (ammo will be reset along with score)" + "\n" +
+        "(you can not reset for a new game until the game has ended)" + "\n" +
+        "to shoot the alien you need to jump and grab an ammo box as it passes over head," + "\n" +
+        "you will be given 2 shots for each successful ammo box catch," + "\n" +
+        "click the mouse to shoot the alien at the right time" + "\n" +
+        " when shot down the alien will revert back to it's normal size");
 })();
