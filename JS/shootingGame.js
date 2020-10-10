@@ -3,6 +3,7 @@
     let cvs;
     let ctx;
     let gameOverText = document.getElementById("ifGameOver");
+    let highScore = document.getElementById("highscore");
     const dimensions = 50;
     let alienDimension = 50;
     const ammoAdd = 1;
@@ -57,7 +58,7 @@
         window.addEventListener("mousedown", function fire(){
             ammo.ammoArray.pop();
             player.shoot();
-            if(alien.x + alienDimension > 137.5 && alien.x < 112.5){
+            if(alien.x + alienDimension > player.x + (dimensions * .75) && alien.x < (player.x + dimensions/4)){
                 alien.x = cvs.width;
                 player.score++;
                 alienDimension = dimensions;
@@ -83,6 +84,9 @@
     function reLoad(){
         load();
         ammo.ammoArray.length = 0;
+        alien.speed = 15;
+        alien.score = 0;
+        player.score = 0;
     }
 
     function load(){
@@ -112,6 +116,7 @@
         if(alien.x <= -alienDimension){
             alien.x = cvs.width;
             alien.score++;
+            alien.speed += 1
             alienDimension *= 1.2;
         }
         alien.x -= alien.speed;
@@ -144,8 +149,7 @@
         if(alienDimension >= cvs.height){
             fill(0,0, cvs.width, cvs.height, "#530909");
             ammo.bullet.x = 1000;
-            alien.score = 0;
-            player.score = 0;
+            highScore.innerHTML = player.score;
             gameOverText.innerHTML = "GAME OVER";
             isGameOver = true;
         }
