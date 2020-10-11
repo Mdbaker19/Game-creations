@@ -7,6 +7,14 @@
     let hitMe = document.getElementById("HitMe");
     let fold = document.getElementById("Fold");
     let stay = document.getElementById("stay");
+    let pCard3 = document.getElementById("p3rd");
+    let pCard4 = document.getElementById("p4th");
+    let pCard5 = document.getElementById("p5th");
+    let dCard3 = document.getElementById("d3rd");
+    let dCard4 = document.getElementById("d4th");
+    let dCard5 = document.getElementById("d5th");
+    let playerExtraCards = document.getElementById("playerExtra");
+    let dealerExtraCards = document.getElementById("dealerExtra");
 
     let king = 10;
     let queen = 10;
@@ -26,27 +34,51 @@
             let pickCard1 = Math.floor(Math.random() * 13);
             let pickCard2 = Math.floor(Math.random() * 13);
             let pickDealerCard1 = Math.floor(Math.random() * 13);
-            pCard1.innerText = allCards[pickCard1];
-            pCard2.innerText = allCards[pickCard2];
-            dCard1.innerText = allCards[pickDealerCard1];
-            dCard2.innerText = "X"
+            pCard1.innerHTML = allCards[pickCard1];
+            pCard2.innerHTML = allCards[pickCard2];
+            dCard1.innerHTML = allCards[pickDealerCard1];
+            dCard2.innerHTML = "X"
 
         });
 
         hitMe.addEventListener("click", function hit(){
-
+            if("playerCards" < 21){
+                "add another card allowed";
+                if("playerCards" < 21){
+                    "add another card allowed";
+                    if("playerCards" < 21){
+                        "add another card allowed";
+                    }
+                }
+            } else {
+                playerExtraCards.innerHTML = "BUST!--"
+            }
         });
 
         fold.addEventListener("click", function end(){
             let showDealerCard2 = Math.floor(Math.random() * 13);
-            dCard2.innerText = allCards[showDealerCard2];
+            dCard2.innerHTML = allCards[showDealerCard2];
+            dealerExtraCards.innerHTML = "Dealer Wins--";
+            playerExtraCards.innerHTML = "Dealer Wins--";
         });
 
         stay.addEventListener("click", function finish(){
             let showDealerCard2 = Math.floor(Math.random() * 13);
-            dCard2.innerText = allCards[showDealerCard2];
-            //if(dealer cards total is > 21){
-                //player wins })
+            dCard2.innerHTML = allCards[showDealerCard2];
+            if("dealerCards" < 21 || "dealerCards" < "playerCards"){
+                "add another card";
+                if("dealerCards" < 21 || "dealerCards" < "playerCards"){
+                    "add another card";
+                    if("dealerCards" < 21 || "dealerCards" < "playerCards"){
+                        "add another card";
+                    }
+                }
+            } else if("dealerCards" > "playerCards") {
+                playerExtraCards.innerHTML = "Dealer Wins--";
+                dealerExtraCards.innerHTML = "Dealer Wins--";
+            } else {
+                dealerExtraCards.innerHTML = "BUST!--";
+            }
         })
 
     }
