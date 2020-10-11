@@ -1,0 +1,52 @@
+body{
+    background-color: saddlebrown;
+}
+.tableEdge{
+    background-color: #2c2626;
+    border-radius: 50%;
+    width: 550px;
+    height: 550px;
+}
+.table{
+    margin-top: 65px;
+    background-color: #194f0a;
+    border-radius: 50%;
+    width: 500px;
+    height: 500px;
+    margin-left: 26px;
+}
+.contents{
+    margin: 45px;
+}
+.user{
+    border: 5px dotted #117078;
+    border-radius: 50%;
+    align-items: center;
+    padding: 10px;
+    margin-top: 34px;
+}
+.computer{
+    border: 5px dotted #7b1818;
+    border-radius: 50%;
+    align-items: center;
+    padding: 10px;
+    margin: 24px;
+}
+.player{
+    height: 100px;
+    margin-top: 50px;
+    margin-left: 100px;
+}
+
+.dealer{
+    height: 100px;
+    margin-top: 50px;
+    margin-left: 100px;
+}
+
+.p2{
+    margin-left: 100px;
+}
+.p1{
+    margin-left: 100px;
+}
