@@ -79,3 +79,25 @@ h1{
 .extraCardsForPlayer{
     margin-left: 125px;
 }
+.playerChips{
+    margin-left: 50px;
+    margin-top: -77px;
+    margin-bottom: 30px;
+}
+.dealerChips{
+    margin-left: 50px;
+    margin-top: -77px;
+    margin-bottom: 30px;
+}
+.dealerBet{
+    margin-left: 20px;
+}
+.playerBet{
+    margin-left: 20px;
+}
+.betInputBox{
+    margin-left: 50px;
+}
+.submitBet{
+    margin-left: 50px;
+}

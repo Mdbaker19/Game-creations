@@ -15,7 +15,15 @@
     let dCard5 = document.getElementById("d5th");
     let playerExtraCards = document.getElementById("playerExtra");
     let dealerExtraCards = document.getElementById("dealerExtra");
+    let dealerChips = document.getElementById("dChips");
+    let dealerBet = document.getElementById("dBet");
+    let playerChips = document.getElementById("pChips");
+    let playerBet = document.getElementById("pBet");
+    let placeBet = document.getElementById("betInput");
+    let submitBet = document.getElementById("betAmount");
 
+    let pChipAmount = 100;
+    let dChipAmount = 100;
     let king = 10;
     let queen = 10;
     let jack = 10;
@@ -28,6 +36,15 @@
 
 
     window.onload = function () {
+        dealerChips.innerHTML = pChipAmount;
+        playerChips.innerHTML = dChipAmount;
+
+        submitBet.addEventListener("click", function bet(){
+            let dealerBetRandom = Math.floor(Math.random() * 20) + 5;
+            dealerBet.innerHTML = dealerBetRandom;
+           playerBet.innerHTML = placeBet.value;
+        });
+
         dealOutCards.addEventListener("click", function start() {
             let pickCard1 = Math.floor(Math.random() * 13);
             let pickCard2 = Math.floor(Math.random() * 13);
@@ -67,15 +84,21 @@
                     if (dealerTotal1And2 + pickDealerCard3 > 21) {
                         dealerExtraCards.innerHTML = "BUST!";
                         playerExtraCards.innerHTML = "Player Wins!--";
+                    } else if (dealerTotal1And2 > playerTotal1And2) {
+                        playerExtraCards.innerHTML = "Dealer Wins--";
+                        dealerExtraCards.innerHTML = "Dealer Wins--";
+                    } else if (dealerTotal1And2 < playerTotal1And2) {
+                        playerExtraCards.innerHTML = "Player Wins--";
+                        dealerExtraCards.innerHTML = "Player Wins--";
                     }
-                } else if (dealerTotal1And2 > playerTotal1And2) {
-                    playerExtraCards.innerHTML = "Dealer Wins--";
-                    dealerExtraCards.innerHTML = "Dealer Wins--";
-                } else if (dealerTotal1And2 < playerTotal1And2) {
-                    playerExtraCards.innerHTML = "Player Wins--";
-                    dealerExtraCards.innerHTML = "Player Wins--";
                 }
             });
+
+            fold.addEventListener("click", function end(){
+               dealerExtraCards.innerHTML = "Dealer Wins--";
+               playerExtraCards.innerHTML = "Dealer Wins--";
+            });
+
         });
     }
 
