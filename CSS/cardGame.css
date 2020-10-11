@@ -1,8 +1,9 @@
 body{
-    background-color: saddlebrown;
+    background-image: url(../images/poker_chips.jpeg);
 }
 .tableEdge{
     background-color: #2c2626;
+    padding: 2px 25px 70px;
     border-radius: 50%;
     width: 550px;
     height: 550px;
@@ -17,16 +18,17 @@ body{
 }
 .contents{
     margin: 45px;
+    color: aliceblue;
 }
 .user{
-    border: 5px dotted #117078;
+    /*border: 5px dotted #117078;*/
     border-radius: 50%;
     align-items: center;
     padding: 10px;
-    margin-top: 34px;
+    margin-top: 25px;
 }
 .computer{
-    border: 5px dotted #7b1818;
+    /*border: 5px dotted #7b1818;*/
     border-radius: 50%;
     align-items: center;
     padding: 10px;
@@ -34,10 +36,15 @@ body{
 }
 .player{
     height: 100px;
-    margin-top: 50px;
+    margin-top: 5px;
     margin-left: 100px;
 }
-
+h1{
+    margin-left: 205px;
+    margin-top: 66px;
+    text-decoration: underline;
+    color: #eff2f4;
+}
 .dealer{
     height: 100px;
     margin-top: 50px;
@@ -48,5 +55,27 @@ body{
     margin-left: 100px;
 }
 .p1{
-    margin-left: 100px;
+    margin-left: 135px;
+}
+#HitMe{
+    border-radius: 25%;
+    cursor: pointer;
+}
+#Fold{
+    border-radius: 25%;
+    cursor: pointer;
+}
+#stay{
+    border-radius: 25%;
+    cursor: pointer;
+}
+#dealCards{
+    border-radius: 25%;
+    cursor: pointer;
+}
+.extraCardsForDealer{
+    margin-left: 107px;
+}
+.extraCardsForPlayer{
+    margin-left: 130px;
 }
