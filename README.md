@@ -5,3 +5,4 @@ making re-mixes of classics or random simple games to practice html canvas with 
 -----jumpV2 is far from being done, only have a character drawn out on canvas
 -----collision practice and -object characters- is not really anything, just mess a around file
 --------shooting game, -----pong and -----jump dodge are done
+-----black jack game is difficult to get logic correct, not done------
