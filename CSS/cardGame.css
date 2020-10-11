@@ -3,7 +3,7 @@ body{
 }
 .tableEdge{
     background-color: #2c2626;
-    padding: 10px 25px 70px;
+    padding: 1px 35px 78px;
     border-radius: 50%;
     width: 550px;
     height: 550px;
@@ -74,8 +74,8 @@ h1{
     cursor: pointer;
 }
 .extraCardsForDealer{
-    margin-left: 107px;
+    margin-left: 100px;
 }
 .extraCardsForPlayer{
-    margin-left: 102px;
+    margin-left: 125px;
 }

@@ -19,7 +19,7 @@
     let king = 10;
     let queen = 10;
     let jack = 10;
-    let ace = 11;
+    let ace = 1;// maybe [1, 11] and index it by choice??
 
     const allCards = [
         1, 2, 3, 4, 5, 6, 7, 8, 9,
@@ -27,61 +27,56 @@
     ]; // 13 items
 
 
-
-    window.onload = function start(){
-
-        dealOutCards.addEventListener("click", function dealCards(){
+    window.onload = function () {
+        dealOutCards.addEventListener("click", function start() {
             let pickCard1 = Math.floor(Math.random() * 13);
             let pickCard2 = Math.floor(Math.random() * 13);
+            let playerTotal1And2 = pickCard1 + pickCard2;
             let pickDealerCard1 = Math.floor(Math.random() * 13);
+            dealerExtraCards.innerHTML = "-";
+            playerExtraCards.innerHTML = "-";
             pCard1.innerHTML = allCards[pickCard1];
             pCard2.innerHTML = allCards[pickCard2];
             dCard1.innerHTML = allCards[pickDealerCard1];
             dCard2.innerHTML = "X"
+            dCard3.innerHTML = "x-"
+            dCard4.innerHTML = "-x-"
+            dCard5.innerHTML = "-x"
+            pCard3.innerHTML = "x-"
+            pCard4.innerHTML = "-x-"
+            pCard5.innerHTML = "-x"
 
-        });
-
-        hitMe.addEventListener("click", function hit(){
-            if("playerCards" < 21){
-                "add another card allowed";
-                if("playerCards" < 21){
-                    "add another card allowed";
-                    if("playerCards" < 21){
-                        "add another card allowed";
+            hitMe.addEventListener("click", function hit() {
+                if (playerTotal1And2 < 21) {
+                    let pickCard3 = Math.floor(Math.random() * 13);
+                    pCard3.innerHTML = allCards[pickCard3] + "--";
+                    if (pickCard3 + playerTotal1And2 > 21) {
+                        playerExtraCards.innerHTML = "BUST!";
+                        dealerExtraCards.innerHTML = "Dealer Wins--";
                     }
                 }
-            } else {
-                playerExtraCards.innerHTML = "BUST!--"
-            }
-        });
+            });
 
-        fold.addEventListener("click", function end(){
-            let showDealerCard2 = Math.floor(Math.random() * 13);
-            dCard2.innerHTML = allCards[showDealerCard2];
-            dealerExtraCards.innerHTML = "Dealer Wins--";
-            playerExtraCards.innerHTML = "Dealer Wins--";
-        });
-
-        stay.addEventListener("click", function finish(){
-            let showDealerCard2 = Math.floor(Math.random() * 13);
-            dCard2.innerHTML = allCards[showDealerCard2];
-            if("dealerCards" < 21 || "dealerCards" < "playerCards"){
-                "add another card";
-                if("dealerCards" < 21 || "dealerCards" < "playerCards"){
-                    "add another card";
-                    if("dealerCards" < 21 || "dealerCards" < "playerCards"){
-                        "add another card";
+            stay.addEventListener("click", function stay() {
+                let pickDealerCard2 = Math.floor(Math.random() * 13);
+                dCard2.innerHTML = allCards[pickDealerCard2];
+                let dealerTotal1And2 = pickDealerCard2 + pickDealerCard1;
+                if (dealerTotal1And2 < 21) {
+                    let pickDealerCard3 = Math.floor(Math.random() * 13);
+                    dCard3.innerHTML = allCards[pickDealerCard3];
+                    if (dealerTotal1And2 + pickDealerCard3 > 21) {
+                        dealerExtraCards.innerHTML = "BUST!";
+                        playerExtraCards.innerHTML = "Player Wins!--";
                     }
+                } else if (dealerTotal1And2 > playerTotal1And2) {
+                    playerExtraCards.innerHTML = "Dealer Wins--";
+                    dealerExtraCards.innerHTML = "Dealer Wins--";
+                } else if (dealerTotal1And2 < playerTotal1And2) {
+                    playerExtraCards.innerHTML = "Player Wins--";
+                    dealerExtraCards.innerHTML = "Player Wins--";
                 }
-            } else if("dealerCards" > "playerCards") {
-                playerExtraCards.innerHTML = "Dealer Wins--";
-                dealerExtraCards.innerHTML = "Dealer Wins--";
-            } else {
-                dealerExtraCards.innerHTML = "BUST!--";
-            }
-        })
-
+            });
+        });
     }
-
 
 })();
