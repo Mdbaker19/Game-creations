@@ -1,5 +1,8 @@
 body{
     background-image: url(../images/poker_chips.jpeg);
+    background-repeat: repeat-y;
+    background-size: cover;
+    margin-left: 32%;
 }
 .tableEdge{
     background-color: #2c2626;
@@ -60,10 +63,12 @@ h1{
 #HitMe{
     border-radius: 25%;
     cursor: pointer;
+    margin: 1%;
 }
 #Fold{
     border-radius: 25%;
     cursor: pointer;
+    margin: 1%;
 }
 #stay{
     border-radius: 25%;
@@ -99,7 +104,7 @@ h1{
     margin-left: 50px;
 }
 .submitBet{
-    margin-left: 50px;
+    margin-left: 98px;
 }
 #betInput{
     width: 50px;

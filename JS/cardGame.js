@@ -40,9 +40,18 @@
         playerChips.innerHTML = dChipAmount;
 
         submitBet.addEventListener("click", function bet(){
-            let dealerBetRandom = Math.floor(Math.random() * 20) + 5;
+            if(dChipAmount >= 24){
+                var dealerBetRandom = Math.floor(Math.random() * 20) + 5;
+            } else if(dChipAmount < 24){
+                dealerBetRandom = Math.floor(Math.random() * dChipAmount) + 1;
+            }
             dealerBet.innerHTML = dealerBetRandom;
-           playerBet.innerHTML = placeBet.value;
+            playerBet.innerHTML = placeBet.value;
+            pChipAmount -= placeBet.value;
+            playerChips.innerHTML = pChipAmount;
+            dChipAmount -= dealerBetRandom;
+            dealerChips.innerHTML = dChipAmount;
+
         });
 
         dealOutCards.addEventListener("click", function start() {
