@@ -95,6 +95,8 @@
             });
 
             fold.addEventListener("click", function end(){
+               let pickDealerCard2 = Math.floor(Math.random() * 13);
+               dCard2.innerHTML = allCards[pickDealerCard2];
                dealerExtraCards.innerHTML = "Dealer Wins--";
                playerExtraCards.innerHTML = "Dealer Wins--";
             });
