@@ -101,3 +101,6 @@ h1{
 .submitBet{
     margin-left: 50px;
 }
+#betInput{
+    width: 50px;
+}
