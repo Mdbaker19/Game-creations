@@ -1,5 +1,6 @@
 (function (){
     // draw of laser is a little buggy, sometimes does not animate
+    // add a resize function for when alien is shot and game restarts
     let cvs;
     let ctx;
     let gameOverText = document.getElementById("ifGameOver");
@@ -22,8 +23,6 @@
         score: 0,
         shoot: function fire(){
             if(ammo.ammoArray.length >= 1){
-                //the height and topY is set to be drawn from the top of the canvas down to just above the player
-                // leftX is that so it is set to be center with the given width of half the player
                 fill(this.x + dimensions / 4, 0, dimensions / 2, cvs.height - dimensions * 2, "#a44f19");
             }
         },
@@ -63,8 +62,9 @@
             player.shoot();
             if(alien.x + alienDimension > player.x + (dimensions * .75) && alien.x < (player.x + dimensions/4)){
                 alien.x = cvs.width;
+                revertAlienSize();
                 player.score++;
-                alienDimension = dimensions;
+
             }
         });
 
@@ -92,8 +92,7 @@
         alien.score = 0;
         player.score = 0;
         player.y = 450;
-        alien.eyes = 5;
-        alien.arms = 15;
+        revertAlienSize();
     }
 
     function load(){
@@ -143,11 +142,15 @@
         }
         alien.x -= alien.speed;
     }
+    function revertAlienSize(){
+        alien.eyes = 5;
+        alien.arms = 15;
+        alienDimension = dimensions;
+    }
 
     function moveBullet(){
         if(ammo.bullet.x < 0) {
             ammo.bullet.x = 800;
-            //ammo.bullet.appear(); why does this not work
         }else {
             ammo.bullet.x -= ammo.bullet.speed;
         }
@@ -155,7 +158,6 @@
             ammo.ammoArray.push(ammoAdd);
             ammo.ammoArray.push(ammoAdd);
             ammo.bullet.x = 800;
-            //ammo.bullet.appear(); why does this not work
         }
     }
 
@@ -167,18 +169,9 @@
         //console.log("bullet is at Y pos: " + ammo.bullet.y);
         //console.log("player is at Y pos: " + player.y);
     }
-    // function gameOver(){
-    //     if(alienDimension >= cvs.height){
-    //         fill(0,0, cvs.width, cvs.height, "#530909");
-    //         ammo.bullet.x = 1000;
-    //         highScore.innerHTML = player.score;
-    //         gameOverText.innerHTML = "GAME OVER";
-    //         isGameOver = true;
-    //     }
-    // }
     console.log("The alien will move across the screen and will grow 20% the next time it passes" + "\n" +
-        "if it is not shot down, if you fail to shoot down the alien before it" + "\n" +
-        "grows to the size of the canvas the game will end and you will need to start" + "\n" +
+        "if it is not shot down. If you fail to shoot down the alien before it" + "\n" +
+        "grows too big, you will be eaten and the game will end. You will need to start" + "\n" +
         "a new game by clicking the button (ammo will be reset along with score)" + "\n" +
         "(you can not reset for a new game until the game has ended)" + "\n" +
         "to shoot the alien you need to jump and grab an ammo box as it passes over head," + "\n" +
