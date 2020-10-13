@@ -94,7 +94,14 @@
         d: 30,
         on: false,
         glow: function (){
-            //whenever at random change to true and change the color
+            //setTimeout(this.turnRed, 8000);
+            setTimeout(this.turnGreen, 5000);
+        },
+        turnRed: function(){
+            light.on = false;
+        },
+        turnGreen: function(){
+            light.on = true;
         }
 
     }
@@ -113,11 +120,11 @@
             carL.move(direction);
             carR.move(direction);
         });
-
     }
     function load(){
         draw();
         carCrash();
+        light.glow();
     }
     function log(){
         //console.log(car.y);
@@ -127,8 +134,8 @@
         // console.log(carR.x);
         // console.log(carR.y);
     }
-    function draw(){
-        fill(0, 0 , cv.width, cv.height, "#747373");//canvas
+    function draw() {
+        fill(0, 0, cv.width, cv.height, "#747373");//canvas
         fill(195, 0, 30, cv.height, "#ffffff");//left sidewalk
         fill(375, 0, 30, cv.height, "#ffffff");// right sidewalk
         fill(0, 345, cv.width, 30, "#ffffff");//top sidewalk
@@ -139,15 +146,19 @@
         fill(225, 365, vRoad.w, 10, "#b02c2c");//second V divider
         fill(215, 375, 10, hRoad.h, "#b02c2c");//first H divider
         fill(375, 375, 10, hRoad.h, "#b02c2c");//second H divider
-        fill(light.x, light.y, light.d, light.d, "#40be0e");
+        if (light.on) {
+            fill(light.x, light.y, light.d, light.d, "#40be0e");//light
+        } else {
+            fill(light.x, light.y, light.d, light.d, "#c90404");
+        }
         fill(car.x, car.y, car.w, car.h, "#1665b5");//myCar
         fill(carL.x, carL.y, carL.w, carL.h, "#551475");//left car
         fill(carR.x, carR.y, carR.w, carR.h, "#5b3508");//right car
         //if light === false { draw bikes and people going across the street
-        if(crash){
+        if (crash) {
             fill(10, 10, 50, 50, "#d001f8");
         }
-        if(crashR){
+        if (crashR) {
             fill(540, 10, 50, 50, "#d001f8");
         }
     }

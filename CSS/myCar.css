@@ -4,3 +4,9 @@
 body{
     background-color: darkslategray;
 }
+.description{
+    color: aliceblue;
+    float: right;
+    margin-top: 5%;
+    margin-right: 25%
+}

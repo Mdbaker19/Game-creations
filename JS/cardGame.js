@@ -34,6 +34,7 @@
         king, queen, jack, ace
     ]; // 13 items
 
+    //cards held array, add an element with each hit, array for each add an item and display
 
     window.onload = function () {
         dealerChips.innerHTML = pChipAmount;
