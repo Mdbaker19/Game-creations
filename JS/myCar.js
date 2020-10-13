@@ -92,10 +92,10 @@
         x: 285,
         y: 435,
         d: 30,
-        on: false,
+        on: true,
         glow: function (){
-            //setTimeout(this.turnRed, 8000);
-            setTimeout(this.turnGreen, 5000);
+            setTimeout(this.turnRed, 5000);
+            //setTimeout(this.turnGreen, 5000);
         },
         turnRed: function(){
             light.on = false;
@@ -106,7 +106,17 @@
 
     }
     let pedestrian = {
-
+        x: 590,
+        y: 525,
+        d: 15,
+        move: function (){
+            if(!light.on){
+                this.x -= 10;
+            }
+            if(this.x < -this.d){
+                this.x = 590;
+            }
+        }
     }
     window.onload = function (){
         cv = document.getElementById("game");
@@ -125,6 +135,7 @@
         draw();
         carCrash();
         light.glow();
+        pedestrian.move();
     }
     function log(){
         //console.log(car.y);
@@ -146,6 +157,7 @@
         fill(225, 365, vRoad.w, 10, "#b02c2c");//second V divider
         fill(215, 375, 10, hRoad.h, "#b02c2c");//first H divider
         fill(375, 375, 10, hRoad.h, "#b02c2c");//second H divider
+        fill(pedestrian.x, pedestrian.y, pedestrian.d, pedestrian.d, "#abea83");//pedestrian
         if (light.on) {
             fill(light.x, light.y, light.d, light.d, "#40be0e");//light
         } else {
