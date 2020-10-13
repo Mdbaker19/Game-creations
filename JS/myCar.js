@@ -1,4 +1,5 @@
 (function (){
+    //add a message for allowing lane change if car near by and confirm if want to do it anyway, crash
     let cv;
     let ctx;
     //600x900
@@ -97,12 +98,14 @@
         }
 
     }
+    let pedestrian = {
 
-
+    }
     window.onload = function (){
         cv = document.getElementById("game");
         ctx = cv.getContext("2d");
-        setInterval(load, 200);
+        setInterval(load, 50);
+        setInterval(log, 500);
 
         window.addEventListener("keydown", function(evt){
             const direction = evt.key.replace("Arrow", "");
@@ -115,10 +118,12 @@
     function load(){
         draw();
         carCrash();
-        console.log(car.y);
+    }
+    function log(){
+        //console.log(car.y);
         //console.log(car.x);
         // console.log(carL.x);
-        console.log(carL.y);
+        //console.log(carL.y);
         // console.log(carR.x);
         // console.log(carR.y);
     }
