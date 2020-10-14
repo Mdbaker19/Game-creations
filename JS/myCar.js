@@ -103,7 +103,6 @@
         turnGreen: function(){
             light.on = true;
         }
-
     }
     let pedestrian = {
         x: 590,
@@ -166,7 +165,6 @@
         fill(car.x, car.y, car.w, car.h, "#1665b5");//myCar
         fill(carL.x, carL.y, carL.w, carL.h, "#551475");//left car
         fill(carR.x, carR.y, carR.w, carR.h, "#5b3508");//right car
-        //if light === false { draw bikes and people going across the street
         if (crash) {
             fill(10, 10, 50, 50, "#d001f8");
         }
@@ -189,5 +187,4 @@
             crashR = false;
         }
     }
-
 })();
