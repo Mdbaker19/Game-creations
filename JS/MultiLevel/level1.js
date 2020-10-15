@@ -8,7 +8,6 @@ function lvl1() {
             switch (direction) {
                 case "Left":
                     this.x -= 10;
-                    loadLvl2();
             }
         }
     }
@@ -32,11 +31,10 @@ function lvl1() {
         ctx.fillStyle = color;
         ctx.fillRect(leftX, topY, width, height);
     }
-    function loadLvl2() {
-        if (player.x < 0) {
-            level2();
-            console.log("load lvl 2");
-        }
-    }
 }
-lvl1();
+
+let loadLvl1 = document.getElementById("load1");
+loadLvl1.addEventListener("click", function (){
+    console.log("loading lvl 1");
+    lvl1();
+});

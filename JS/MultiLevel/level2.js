@@ -17,3 +17,9 @@ function level2(){
         ctx.fillRect(leftX, topY, width, height);
     }
 }
+
+let loadLvl2 = document.getElementById("load2");
+loadLvl2.addEventListener("click", function (){
+    console.log("loading lvl 2");
+    level2();
+});
