@@ -10,8 +10,76 @@
 </head>
 <body>
 <h1>Master Mind Style Game</h1>
+<button id="newGame">NewGame</button>
 <div class="gameBoard">
-
+    <label for="colorInput1">First Color</label>
+    <input id="colorInput1" type="text" placeholder="first color">
+    <button type="submit" id="first">Assert</button><hr>
+    <label for="colorInput2">Second Color</label>
+    <input id="colorInput2" type="text" placeholder="second color">
+    <button type="submit" id="second">Assert</button><hr>
+    <label for="colorInput3">Third Color</label>
+    <input id="colorInput3" type="text" placeholder="third color">
+    <button type="submit" id="third">Assert</button><hr>
+    <label for="colorInput4">Fourth Color</label>
+    <input id="colorInput4" type="text" placeholder="fourth color">
+    <button type="submit" id="fourth">Assert</button><hr>
+</div>
+<div id="responses">
+    <h3>Response:</h3>
+    <table class="guesses">
+        <tr>
+            <th>You</th>
+            <th>Computer</th>
+        </tr>
+        <tr>
+            <td>First:</td>
+            <td><span id="one1">-- --</span> | <span id="one2">-- --</span> | <span id="one3">-- --</span> | <span id="one4">-- --</span></td>
+        </tr>
+        <tr>
+            <td>Second:</td>
+            <td><span id="two1">-- --</span> | <span id="two2">-- --</span> | <span id="two3">-- --</span> | <span id="two4">-- --</span></td>
+        </tr>
+        <tr>
+            <td>Third:</td>
+            <td><span id="three1">-- --</span> | <span id="three2">-- --</span | ><span id="three3">-- --</span> | <span id="three4">-- --</span></td>
+        </tr>
+        <tr>
+            <td>Fourth:</td>
+            <td><span id="four1">--- ---</span> | <span id="four2">-- --</span> | <span id="four3">-- --</span> | <span id="four4">-- --</span></td>
+        </tr>
+        <tr>
+            <td>Fifth:</td>
+            <td><span id="five1">-- --</span> | <span id="five2">-- --</span> | <span id="five3">-- --</span> | <span id="five4">-- --</span></td>
+        </tr>
+        <tr>
+            <td>Sixth:</td>
+            <td><span id="six1">--- ---</span> | <span id="six2">-- --</span> | <span id="six3">-- --</span> | <span id="six4">-- --</span></td>
+        </tr>
+        <tr>
+            <td>Seven:</td>
+            <td><span id="seven1">-- --</span> | <span id="seven2">-- --</span> | <span id="seven3">-- --</span> | <span id="seven4">-- --</span></td>
+        </tr>
+        <tr>
+            <td>Eight:</td>
+            <td><span id="eight1">--- ---</span> | <span id="eight2">-- --</span> | <span id="eight3">-- --</span> | <span id="eight4">-- --</span></td>
+        </tr>
+        <tr>
+            <td>Nine:</td>
+            <td><span id="nine1">-- --</span> | <span id="nine2">-- --</span> | <span id="nine3">-- --</span> | <span id="nine4">-- --</span></td>
+        </tr>
+        <tr>
+            <td>Ten:</td>
+            <td><span id="ten1">--- ---</span> | <span id="ten2">-- --</span> | <span id="ten3">-- --</span> | <span id="ten4">-- --</span></td>
+        </tr>
+    </table>
+    <button id="done">Finish</button>
+</div>
+<div class="answerKey">
+    <h1>Answer key:</h1>
+    <h2><span id="key1">--- ---</span> | <span id="key2">-- --</span> | <span id="key3">-- --</span> | <span id="key4">-- --</span></h2><hr>
+    <h6>Hide these (with hidden?)</h6>
+    <h4><span id="hide1">--- ---</span> | <span id="hide2">-- --</span> | <span id="hide3">-- --</span> | <span id="hide4">-- --</span></h4>
 </div>
 <script src="../JS/masterMind.js"></script>
 </body>

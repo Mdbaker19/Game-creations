@@ -1,3 +1,27 @@
 body {
     background-color: #2c2626;
+    color: aliceblue;
+    text-align: center;
+}
+.guesses{
+    display: flex;
+    justify-content: center;
+}
+#newGame{
+    border: 2px solid #0cd9ff;
+    border-radius: 25%;
+    margin: 1%;
+    background-color: aliceblue;
+    color: #2c2626;
+}
+button{
+    color: #2c2626;
+    background-color: aliceblue;
+    border-radius: 25%;
+    transition-duration: .5s;
+}
+button:hover{
+    color: #2c2626;
+    background-color: aliceblue;
+    cursor: pointer;
 }
