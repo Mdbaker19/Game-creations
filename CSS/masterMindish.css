@@ -1,5 +1,5 @@
 body {
-    background-color: #2c2626;
+    background-color: #4c4141;
     color: aliceblue;
     text-align: center;
 }
@@ -24,4 +24,7 @@ button:hover{
     color: #2c2626;
     background-color: aliceblue;
     cursor: pointer;
+}
+#link{
+    color: aliceblue;
 }
