@@ -10,6 +10,9 @@
 </head>
 <body>
 <h1 id="top">Master Mind Style Game</h1>
+<h3>RC = right color, RS = right spot, WS = wrong spot, "blank" = wrong color wrong spot</h3><br>
+<h3>RC/RS = right color right spot, RC/WS = right color wrong spot</h3><hr>
+<p><span><strong>Options: </strong></span>blue, red, yellow, orange, green, white, black, pink, purple</p><hr>
 <button id="newGame">NewGame</button>
 <div class="gameBoard">
     <label for="colorInput1">First Color</label>
@@ -47,7 +50,7 @@
         </tr>
         <tr>
             <td>Third:</td>
-            <td><span id="three1">-- --</span> | <span id="three2">-- --</span> | ><span id="three3">-- --</span> | <span id="three4">-- --</span></td>
+            <td><span id="three1">-- --</span> | <span id="three2">-- --</span> | <span id="three3">-- --</span> | <span id="three4">-- --</span></td>
         </tr>
         <tr>
             <td>#3</td>
@@ -117,7 +120,7 @@
     <h2><span id="key1">--- ---</span> | <span id="key2">-- --</span> | <span id="key3">-- --</span> | <span id="key4">-- --</span></h2><hr>
     <p id="link">Go To Top -><a href="#top">Click</a></p><hr>
     <h6>Hide these (with hidden?)</h6>
-    <h4><span id="hide1">--- ---</span> | <span id="hide2">-- --</span> | <span id="hide3">-- --</span> | <span id="hide4">-- --</span></h4>
+    <h4 class="hideThis"><span id="hide1">--- ---</span> | <span id="hide2">-- --</span> | <span id="hide3">-- --</span> | <span id="hide4">-- --</span></h4>
 </div>
 <script src="../JS/masterMind.js"></script>
 </body>

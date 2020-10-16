@@ -14,8 +14,13 @@
         "green",
         "purple",
         "white",
-        "black"
+        "black",
+        "pink"
     ];
+    let oneRight = false;
+    let twoRight = false;
+    let threeRight = false;
+    let fourRight = false;
     let key1 = Math.floor(Math.random() * colorKey.length-1) + 1;
     let key2 = Math.floor(Math.random() * colorKey.length-1) + 1;
     let key3 = Math.floor(Math.random() * colorKey.length-1) + 1;
@@ -148,8 +153,41 @@
         your12.innerHTML = second;
         your13.innerHTML = third;
         your14.innerHTML = fourth;
-        if(first === sequence[0]){console.log("check")}
-        else console.log("wrong");
+        if(first === sequence[0]){
+            r11.innerHTML = "RC/RS";
+            oneRight = true;
+        }else if(sequence.indexOf(first) !== -1){
+            r11.innerHTML = "RC/WS";
+        } else{
+            r11.innerHTML = "";
+        }
+        if(second === sequence[1]){
+            r12.innerHTML = "RC/RS";
+            twoRight = true;
+        }else if(sequence.indexOf(second) !== -1){
+            r12.innerHTML = "RC/WS";
+        } else{
+            r12.innerHTML = "";
+        }
+        if(third === sequence[2]){
+            r13.innerHTML = "RC/RS";
+            threeRight = true;
+        }else if(sequence.indexOf(third) !== -1){
+            r13.innerHTML = "RC/WS";
+        } else{
+            r13.innerHTML = "";
+        }
+        if(fourth === sequence[3]){
+            r14.innerHTML = "RC/RS";
+            fourRight = true;
+        }else if(sequence.indexOf(fourth) !== -1){
+            r14.innerHTML = "RC/WS";
+        } else{
+            r14.innerHTML = "";
+        }
+        if(oneRight && twoRight && threeRight && fourRight){
+            console.log("WINNER");
+        }
         assert.addEventListener("click", function (){
             let first = guess1.value;
             let second = guess2.value;
@@ -159,6 +197,41 @@
             your22.innerHTML = second;
             your23.innerHTML = third;
             your24.innerHTML = fourth;
+            if(first === sequence[0]){
+                r21.innerHTML = "RC/RS";
+                oneRight = true;
+            }else if(sequence.indexOf(first) !== -1){
+                r21.innerHTML = "RC/WS";
+            } else{
+                r21.innerHTML = "";
+            }
+            if(second === sequence[1]){
+                r22.innerHTML = "RC/RS";
+                twoRight = true;
+            }else if(sequence.indexOf(second) !== -1){
+                r22.innerHTML = "RC/WS";
+            } else{
+                r22.innerHTML = "";
+            }
+            if(third === sequence[2]){
+                r23.innerHTML = "RC/RS";
+                threeRight = true;
+            }else if(sequence.indexOf(third) !== -1){
+                r23.innerHTML = "RC/WS";
+            } else{
+                r23.innerHTML = "";
+            }
+            if(fourth === sequence[3]){
+                r24.innerHTML = "RC/RS";
+                fourRight = true;
+            }else if(sequence.indexOf(fourth) !== -1){
+                r24.innerHTML = "RC/WS";
+            } else{
+                r24.innerHTML = "";
+            }
+            if(oneRight && twoRight && threeRight && fourRight){
+                console.log("WINNER");
+            }
             assert.addEventListener("click", function (){
                 let first = guess1.value;
                 let second = guess2.value;
@@ -168,6 +241,41 @@
                 your32.innerHTML = second;
                 your33.innerHTML = third;
                 your34.innerHTML = fourth;
+                if(first === sequence[0]){
+                    r31.innerHTML = "RC/RS";
+                    oneRight = true;
+                }else if(sequence.indexOf(first) !== -1){
+                    r31.innerHTML = "RC/WS";
+                } else{
+                    r31.innerHTML = "";
+                }
+                if(second === sequence[1]){
+                    r32.innerHTML = "RC/RS";
+                    twoRight = true;
+                }else if(sequence.indexOf(second) !== -1){
+                    r32.innerHTML = "RC/WS";
+                } else{
+                    r32.innerHTML = "";
+                }
+                if(third === sequence[2]){
+                    r33.innerHTML = "RC/RS";
+                    threeRight = true;
+                }else if(sequence.indexOf(third) !== -1){
+                    r33.innerHTML = "RC/WS";
+                } else{
+                    r33.innerHTML = "";
+                }
+                if(fourth === sequence[3]){
+                    r34.innerHTML = "RC/RS";
+                    fourRight = true;
+                }else if(sequence.indexOf(fourth) !== -1){
+                    r34.innerHTML = "RC/WS";
+                } else{
+                    r34.innerHTML = "";
+                }
+                if(oneRight && twoRight && threeRight && fourRight){
+                    console.log("WINNER");
+                }
                 assert.addEventListener("click", function (){
                     let first = guess1.value;
                     let second = guess2.value;
@@ -177,6 +285,41 @@
                     your42.innerHTML = second;
                     your43.innerHTML = third;
                     your44.innerHTML = fourth;
+                    if(first === sequence[0]){
+                        r41.innerHTML = "RC/RS";
+                        oneRight = true;
+                    }else if(sequence.indexOf(first) !== -1){
+                        r41.innerHTML = "RC/WS";
+                    } else{
+                        r41.innerHTML = "";
+                    }
+                    if(second === sequence[1]){
+                        r42.innerHTML = "RC/RS";
+                        twoRight = true;
+                    }else if(sequence.indexOf(second) !== -1){
+                        r42.innerHTML = "RC/WS";
+                    } else{
+                        r42.innerHTML = "";
+                    }
+                    if(third === sequence[2]){
+                        r43.innerHTML = "RC/RS";
+                        threeRight = true;
+                    }else if(sequence.indexOf(third) !== -1){
+                        r43.innerHTML = "RC/WS";
+                    } else{
+                        r43.innerHTML = "";
+                    }
+                    if(fourth === sequence[3]){
+                        r44.innerHTML = "RC/RS";
+                        fourRight = true;
+                    }else if(sequence.indexOf(fourth) !== -1){
+                        r44.innerHTML = "RC/WS";
+                    } else{
+                        r44.innerHTML = "";
+                    }
+                    if(oneRight && twoRight && threeRight && fourRight){
+                        console.log("WINNER");
+                    }
                     assert.addEventListener("click", function (){
                         let first = guess1.value;
                         let second = guess2.value;
@@ -186,6 +329,41 @@
                         your52.innerHTML = second;
                         your53.innerHTML = third;
                         your54.innerHTML = fourth;
+                        if(first === sequence[0]){
+                            r51.innerHTML = "RC/RS";
+                            oneRight = true;
+                        }else if(sequence.indexOf(first) !== -1){
+                            r51.innerHTML = "RC/WS";
+                        } else{
+                            r51.innerHTML = "";
+                        }
+                        if(second === sequence[1]){
+                            r52.innerHTML = "RC/RS";
+                            twoRight = true;
+                        }else if(sequence.indexOf(second) !== -1){
+                            r52.innerHTML = "RC/WS";
+                        } else{
+                            r52.innerHTML = "";
+                        }
+                        if(third === sequence[2]){
+                            r53.innerHTML = "RC/RS";
+                            threeRight = true;
+                        }else if(sequence.indexOf(third) !== -1){
+                            r53.innerHTML = "RC/WS";
+                        } else{
+                            r53.innerHTML = "";
+                        }
+                        if(fourth === sequence[3]){
+                            r54.innerHTML = "RC/RS";
+                            fourRight = true;
+                        }else if(sequence.indexOf(fourth) !== -1){
+                            r54.innerHTML = "RC/WS";
+                        } else{
+                            r54.innerHTML = "";
+                        }
+                        if(oneRight && twoRight && threeRight && fourRight){
+                            console.log("WINNER");
+                        }
                         assert.addEventListener("click", function (){
                             let first = guess1.value;
                             let second = guess2.value;
@@ -195,6 +373,41 @@
                             your62.innerHTML = second;
                             your63.innerHTML = third;
                             your64.innerHTML = fourth;
+                            if(first === sequence[0]){
+                                r61.innerHTML = "RC/RS";
+                                oneRight = true;
+                            }else if(sequence.indexOf(first) !== -1){
+                                r61.innerHTML = "RC/WS";
+                            } else{
+                                r61.innerHTML = "";
+                            }
+                            if(second === sequence[1]){
+                                r62.innerHTML = "RC/RS";
+                                twoRight = true;
+                            }else if(sequence.indexOf(second) !== -1){
+                                r62.innerHTML = "RC/WS";
+                            } else{
+                                r62.innerHTML = "";
+                            }
+                            if(third === sequence[2]){
+                                r63.innerHTML = "RC/RS";
+                                threeRight = true;
+                            }else if(sequence.indexOf(third) !== -1){
+                                r63.innerHTML = "RC/WS";
+                            } else{
+                                r63.innerHTML = "";
+                            }
+                            if(fourth === sequence[3]){
+                                r64.innerHTML = "RC/RS";
+                                fourRight = true;
+                            }else if(sequence.indexOf(fourth) !== -1){
+                                r64.innerHTML = "RC/WS";
+                            } else{
+                                r64.innerHTML = "";
+                            }
+                            if(oneRight && twoRight && threeRight && fourRight){
+                                console.log("WINNER");
+                            }
                             assert.addEventListener("click", function (){
                                 let first = guess1.value;
                                 let second = guess2.value;
@@ -204,6 +417,41 @@
                                 your72.innerHTML = second;
                                 your73.innerHTML = third;
                                 your74.innerHTML = fourth;
+                                if(first === sequence[0]){
+                                    r71.innerHTML = "RC/RS";
+                                    oneRight = true;
+                                }else if(sequence.indexOf(first) !== -1){
+                                    r71.innerHTML = "RC/WS";
+                                } else{
+                                    r71.innerHTML = "";
+                                }
+                                if(second === sequence[1]){
+                                    r72.innerHTML = "RC/RS";
+                                    twoRight = true;
+                                }else if(sequence.indexOf(second) !== -1){
+                                    r72.innerHTML = "RC/WS";
+                                } else{
+                                    r72.innerHTML = "";
+                                }
+                                if(third === sequence[2]){
+                                    r73.innerHTML = "RC/RS";
+                                    threeRight = true;
+                                }else if(sequence.indexOf(third) !== -1){
+                                    r73.innerHTML = "RC/WS";
+                                } else{
+                                    r73.innerHTML = "";
+                                }
+                                if(fourth === sequence[3]){
+                                    r74.innerHTML = "RC/RS";
+                                    fourRight = true;
+                                }else if(sequence.indexOf(fourth) !== -1){
+                                    r74.innerHTML = "RC/WS";
+                                } else{
+                                    r74.innerHTML = "";
+                                }
+                                if(oneRight && twoRight && threeRight && fourRight){
+                                    console.log("WINNER");
+                                }
                                 assert.addEventListener("click", function (){
                                     let first = guess1.value;
                                     let second = guess2.value;
@@ -213,6 +461,41 @@
                                     your82.innerHTML = second;
                                     your83.innerHTML = third;
                                     your84.innerHTML = fourth;
+                                    if(first === sequence[0]){
+                                        r81.innerHTML = "RC/RS";
+                                        oneRight = true;
+                                    }else if(sequence.indexOf(first) !== -1){
+                                        r81.innerHTML = "RC/WS";
+                                    } else{
+                                        r81.innerHTML = "";
+                                    }
+                                    if(second === sequence[1]){
+                                        r82.innerHTML = "RC/RS";
+                                        twoRight = true;
+                                    }else if(sequence.indexOf(second) !== -1){
+                                        r82.innerHTML = "RC/WS";
+                                    } else{
+                                        r82.innerHTML = "";
+                                    }
+                                    if(third === sequence[2]){
+                                        r83.innerHTML = "RC/RS";
+                                        threeRight = true;
+                                    }else if(sequence.indexOf(third) !== -1){
+                                        r83.innerHTML = "RC/WS";
+                                    } else{
+                                        r83.innerHTML = "";
+                                    }
+                                    if(fourth === sequence[3]){
+                                        r84.innerHTML = "RC/RS";
+                                        fourRight = true;
+                                    }else if(sequence.indexOf(fourth) !== -1){
+                                        r84.innerHTML = "RC/WS";
+                                    } else{
+                                        r84.innerHTML = "";
+                                    }
+                                    if(oneRight && twoRight && threeRight && fourRight){
+                                        console.log("WINNER");
+                                    }
                                     assert.addEventListener("click", function (){
                                         let first = guess1.value;
                                         let second = guess2.value;
@@ -222,6 +505,41 @@
                                         your92.innerHTML = second;
                                         your93.innerHTML = third;
                                         your94.innerHTML = fourth;
+                                        if(first === sequence[0]){
+                                            r91.innerHTML = "RC/RS";
+                                            oneRight = true;
+                                        }else if(sequence.indexOf(first) !== -1){
+                                            r91.innerHTML = "RC/WS";
+                                        } else{
+                                            r91.innerHTML = "";
+                                        }
+                                        if(second === sequence[1]){
+                                            r92.innerHTML = "RC/RS";
+                                            twoRight = true;
+                                        }else if(sequence.indexOf(second) !== -1){
+                                            r92.innerHTML = "RC/WS";
+                                        } else{
+                                            r92.innerHTML = "";
+                                        }
+                                        if(third === sequence[2]){
+                                            r93.innerHTML = "RC/RS";
+                                            threeRight = true;
+                                        }else if(sequence.indexOf(third) !== -1){
+                                            r93.innerHTML = "RC/WS";
+                                        } else{
+                                            r93.innerHTML = "";
+                                        }
+                                        if(fourth === sequence[3]){
+                                            r94.innerHTML = "RC/RS";
+                                            fourRight = true;
+                                        }else if(sequence.indexOf(fourth) !== -1){
+                                            r94.innerHTML = "RC/WS";
+                                        } else{
+                                            r94.innerHTML = "";
+                                        }
+                                        if(oneRight && twoRight && threeRight && fourRight){
+                                            console.log("WINNER");
+                                        }
                                         assert.addEventListener("click", function (){
                                             let first = guess1.value;
                                             let second = guess2.value;
@@ -231,6 +549,41 @@
                                             your102.innerHTML = second;
                                             your103.innerHTML = third;
                                             your104.innerHTML = fourth;
+                                            if(first === sequence[0]){
+                                                r101.innerHTML = "RC/RS";
+                                                oneRight = true;
+                                            }else if(sequence.indexOf(first) !== -1){
+                                                r101.innerHTML = "RC/WS";
+                                            } else{
+                                                r101.innerHTML = "";
+                                            }
+                                            if(second === sequence[1]){
+                                                r102.innerHTML = "RC/RS";
+                                                twoRight = true;
+                                            }else if(sequence.indexOf(second) !== -1){
+                                                r102.innerHTML = "RC/WS";
+                                            } else{
+                                                r102.innerHTML = "";
+                                            }
+                                            if(third === sequence[2]){
+                                                r103.innerHTML = "RC/RS";
+                                                threeRight = true;
+                                            }else if(sequence.indexOf(third) !== -1){
+                                                r103.innerHTML = "RC/WS";
+                                            } else{
+                                                r103.innerHTML = "";
+                                            }
+                                            if(fourth === sequence[3]){
+                                                r104.innerHTML = "RC/RS";
+                                                fourRight = true;
+                                            }else if(sequence.indexOf(fourth) !== -1){
+                                                r104.innerHTML = "RC/WS";
+                                            } else{
+                                                r104.innerHTML = "";
+                                            }
+                                            if(oneRight && twoRight && threeRight && fourRight){
+                                                console.log("WINNER");
+                                            }
                                         });
                                     });
                                 });
