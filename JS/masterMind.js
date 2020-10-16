@@ -4,6 +4,8 @@
     // have it return correct color wrong spot by indexOf(your input) !== -1 and if the index matches then it is
     // correct color correct spot
 
+    // do a loop and increment i through to 10, do if statements to then have it apply to the next block
+
     const colorKey = [
         "blue",
         "red",
@@ -18,6 +20,7 @@
     let key2 = Math.floor(Math.random() * colorKey.length-1) + 1;
     let key3 = Math.floor(Math.random() * colorKey.length-1) + 1;
     let key4 = Math.floor(Math.random() * colorKey.length-1) + 1;
+    let sequence = [];
 
     let newGame = document.getElementById("newGame");
     let done = document.getElementById("done");
@@ -33,10 +36,10 @@
     let answer4 = document.getElementById("key4");
     //assert buttons
     let assert = document.getElementById("submit");
-    let guess1 = document.getElementById("colorInput1").value;
-    let guess2 = document.getElementById("colorInput2").value;
-    let guess3 = document.getElementById("colorInput3").value;
-    let guess4 = document.getElementById("colorInput4").value;
+    let guess1 = document.getElementById("colorInput1");
+    let guess2 = document.getElementById("colorInput2");
+    let guess3 = document.getElementById("colorInput3");
+    let guess4 = document.getElementById("colorInput4");
     //your inputs
     let your11 = document.getElementById("you11");
     let your12 = document.getElementById("you12");
@@ -124,6 +127,11 @@
        hidden2.innerHTML = colorKey[key2];
        hidden3.innerHTML = colorKey[key3];
        hidden4.innerHTML = colorKey[key4];
+       sequence.push(colorKey[key1]);
+       sequence.push(colorKey[key2]);
+       sequence.push(colorKey[key3]);
+       sequence.push(colorKey[key4]);
+       console.log(sequence);
        done.addEventListener("click", function (){
             answer1.innerHTML = hidden1.innerHTML;
             answer2.innerHTML = hidden2.innerHTML;
@@ -132,56 +140,97 @@
        })
     });
     assert.addEventListener("click", function (){
-        your11.innerHTML = guess1;
-        your12.innerHTML = guess2;
-        your13.innerHTML = guess3;
-        your14.innerHTML = guess4;
-        console.log(guess1);
+        let first = guess1.value;
+        let second = guess2.value;
+        let third = guess3.value;
+        let fourth = guess4.value;
+        your11.innerHTML = first;
+        your12.innerHTML = second;
+        your13.innerHTML = third;
+        your14.innerHTML = fourth;
+        if(first === sequence[0]){console.log("check")}
+        else console.log("wrong");
         assert.addEventListener("click", function (){
-           your21.innerHTML = "second";
-           your22.innerHTML = "second";
-           your23.innerHTML = "second";
-           your24.innerHTML = "second";
+            let first = guess1.value;
+            let second = guess2.value;
+            let third = guess3.value;
+            let fourth = guess4.value;
+            your21.innerHTML = first;
+            your22.innerHTML = second;
+            your23.innerHTML = third;
+            your24.innerHTML = fourth;
             assert.addEventListener("click", function (){
-                your31.innerHTML = "third";
-                your32.innerHTML = "third";
-                your33.innerHTML = "third";
-                your34.innerHTML = "third";
+                let first = guess1.value;
+                let second = guess2.value;
+                let third = guess3.value;
+                let fourth = guess4.value;
+                your31.innerHTML = first;
+                your32.innerHTML = second;
+                your33.innerHTML = third;
+                your34.innerHTML = fourth;
                 assert.addEventListener("click", function (){
-                    your41.innerHTML = "four";
-                    your42.innerHTML = "four";
-                    your43.innerHTML = "four";
-                    your44.innerHTML = "four";
+                    let first = guess1.value;
+                    let second = guess2.value;
+                    let third = guess3.value;
+                    let fourth = guess4.value;
+                    your41.innerHTML = first;
+                    your42.innerHTML = second;
+                    your43.innerHTML = third;
+                    your44.innerHTML = fourth;
                     assert.addEventListener("click", function (){
-                        your51.innerHTML = "five";
-                        your52.innerHTML = "five";
-                        your53.innerHTML = "five";
-                        your54.innerHTML = "five";
+                        let first = guess1.value;
+                        let second = guess2.value;
+                        let third = guess3.value;
+                        let fourth = guess4.value;
+                        your51.innerHTML = first;
+                        your52.innerHTML = second;
+                        your53.innerHTML = third;
+                        your54.innerHTML = fourth;
                         assert.addEventListener("click", function (){
-                            your61.innerHTML = "six";
-                            your62.innerHTML = "six";
-                            your63.innerHTML = "six";
-                            your64.innerHTML = "six";
+                            let first = guess1.value;
+                            let second = guess2.value;
+                            let third = guess3.value;
+                            let fourth = guess4.value;
+                            your61.innerHTML = first;
+                            your62.innerHTML = second;
+                            your63.innerHTML = third;
+                            your64.innerHTML = fourth;
                             assert.addEventListener("click", function (){
-                                your71.innerHTML = "seven";
-                                your72.innerHTML = "seven";
-                                your73.innerHTML = "seven";
-                                your74.innerHTML = "seven";
+                                let first = guess1.value;
+                                let second = guess2.value;
+                                let third = guess3.value;
+                                let fourth = guess4.value;
+                                your71.innerHTML = first;
+                                your72.innerHTML = second;
+                                your73.innerHTML = third;
+                                your74.innerHTML = fourth;
                                 assert.addEventListener("click", function (){
-                                    your81.innerHTML = "eight";
-                                    your82.innerHTML = "eight";
-                                    your83.innerHTML = "eight";
-                                    your84.innerHTML = "eight";
+                                    let first = guess1.value;
+                                    let second = guess2.value;
+                                    let third = guess3.value;
+                                    let fourth = guess4.value;
+                                    your81.innerHTML = first;
+                                    your82.innerHTML = second;
+                                    your83.innerHTML = third;
+                                    your84.innerHTML = fourth;
                                     assert.addEventListener("click", function (){
-                                        your91.innerHTML = "nine";
-                                        your92.innerHTML = "nine";
-                                        your93.innerHTML = "nine";
-                                        your94.innerHTML = "nine";
+                                        let first = guess1.value;
+                                        let second = guess2.value;
+                                        let third = guess3.value;
+                                        let fourth = guess4.value;
+                                        your91.innerHTML = first;
+                                        your92.innerHTML = second;
+                                        your93.innerHTML = third;
+                                        your94.innerHTML = fourth;
                                         assert.addEventListener("click", function (){
-                                            your101.innerHTML = "ten";
-                                            your102.innerHTML = "ten";
-                                            your103.innerHTML = "ten";
-                                            your104.innerHTML = "ten";
+                                            let first = guess1.value;
+                                            let second = guess2.value;
+                                            let third = guess3.value;
+                                            let fourth = guess4.value;
+                                            your101.innerHTML = first;
+                                            your102.innerHTML = second;
+                                            your103.innerHTML = third;
+                                            your104.innerHTML = fourth;
                                         });
                                     });
                                 });
