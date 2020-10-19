@@ -15,11 +15,11 @@
         "green",
         "pink",
         "brown",
-        "lav",
+        "olive",
         "purple",
         "grey",
         "lime",
-        "mint",
+        "cyan",
         "tan"
     ]
     let hardMode = document.getElementById("increaseDiff");
