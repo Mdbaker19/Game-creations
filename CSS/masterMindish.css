@@ -22,6 +22,9 @@ body {
     font-size: 3em;
     color: #14BDEB;
 }
+.thin{
+    margin-bottom: -1em;
+}
 h3{
     color: #14BDEB;
     font-family:"Press Start 2P", "Helvetica Neue", sans-serif;
@@ -34,7 +37,7 @@ button{
 }
 button:hover{
     background-color: #2c2626;
-    color: aliceblue;
+    color: #14BDEB;
     cursor: pointer;
 }
 #link{
@@ -57,12 +60,19 @@ button:hover{
 .colorGuess{
     border:#080708;
     background-color: #101010;
+    color: #FFFAFB;
 }
 .inputs{
     padding: 0.3em;
 }
 .red{
     color: #ff2e00;
+}
+.lime{
+    color: #78fc6a;
+}
+.tan{
+    color: #c7aa74;
 }
 .white{
     color: #fffaff;
@@ -74,7 +84,7 @@ button:hover{
     color: #ef476f;
 }
 .mint{
-    color: #8ae9c1;
+    color: #97e2c2;
 }
 .green{
     color: #034c3c;

@@ -7,19 +7,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../CSS/masterMindish.css">
     <link href='https://fonts.googleapis.com/css?family=Press Start 2P' rel='stylesheet'>
-    <title>Color Code Break</title>
+    <title>Master The Code</title>
 </head>
 <body>
 <main class="shadow">
 <h1 id="top">Break Me</h1>
-<h2><span class="red">Red</span> = right color right spot, <span class="white">White</span> = right color wrong spot</h2>
-<h5>(no particular order)</h5><br>
-<p><span><strong>Options: </strong><em>(Type in lower case)  </em></span><span class="blue">blue</span>, <span class="red">red</span>, <span class="yellow">yellow</span>, <span class="orange">orange</span>, <span class="green">green</span>, <span class="white">white</span> and <span class="pink">pink</span></p><br>
+<h2><span class="red">Red</span> = right color right spot | <span class="white">White</span> = right color wrong spot</h2>
+<h5 class="thin">(no particular order)</h5><br>
+<p><span><strong>Options: </strong><em>(Type in lower case)  </em></span><span class="blue">blue</span>, <span class="brown">brown</span>, <span class="yellow">yellow</span>, <span class="orange">orange</span>, <span class="green">green</span>, <span class="tan">tan</span> and <span class="pink">pink</span></p><br>
 <button id="increaseDiff">Hard Mode</button><p id="isHardMode"></p><br>
-<p class="otherColors">(Add <span class="grey">grey</span>, <span class="mint">mint</span>, <span class="lav">lav</span>, <span class="purple">purple</span> and <span class="brown">brown</span>)</p><br>
+<p class="otherColors">(Add <span class="grey">grey</span>, <span class="mint">mint</span>, <span class="lav">lav</span>, <span class="purple">purple</span> and <span class="lime">lime</span>)</p><br>
 </main>
 <button id="newGame">Start Game</button><br>
-<textarea rows="8" cols="100" placeholder="Note attempts here (Not in:---, Possible:---, In:---)" class="notes"></textarea>
+<textarea rows="9" cols="100" class="notes">Not In Sequence:
+
+Possible Colors:
+
+In Sequence: </textarea>
 <div class="gameBoard">
     <div class="inputs">
         <label for="colorInput1">First Color </label>
@@ -41,10 +45,9 @@
     <p id="winner"></p><br>
 </div>
 <div id="responses">
-    <h3>Response:</h3>
     <table class="guesses">
         <tr>
-            <td>First:</td>
+            <td><h3>Response:</h3></td>
             <td><span id="one1">-- --</span></td>
         </tr>
         <tr>
@@ -52,72 +55,37 @@
             <td><span id="you11">..</span> | <span id="you12">..</span> | <span id="you13">..</span> | <span id="you14">..</span></td>
         </tr>
         <tr>
-            <td>Second:</td>
-            <td><span id="two1">-- --</span></td>
-        </tr>
-        <tr>
             <td>#2</td>
             <td><span id="you21">..</span> | <span id="you22">..</span> | <span id="you23">..</span> | <span id="you24">..</span></td>
-        </tr>
-        <tr>
-            <td>Third:</td>
-            <td><span id="three1">-- --</span></td>
         </tr>
         <tr>
             <td>#3</td>
             <td><span id="you31">..</span> | <span id="you32">..</span> | <span id="you33">..</span> | <span id="you34">..</span></td>
         </tr>
         <tr>
-            <td>Fourth:</td>
-            <td><span id="four1">--- ---</span></td>
-        </tr>
-        <tr>
             <td>#4</td>
             <td><span id="you41">..</span> | <span id="you42">..</span> | <span id="you43">..</span> | <span id="you44">..</span></td>
-        </tr>
-        <tr>
-            <td>Fifth:</td>
-            <td><span id="five1">-- --</span></td>
         </tr>
         <tr>
             <td>#5</td>
             <td><span id="you51">..</span> | <span id="you52">..</span> | <span id="you53">..</span> | <span id="you54">..</span></td>
         </tr>
         <tr>
-            <td>Sixth:</td>
-            <td><span id="six1">--- ---</span></td>
-        </tr>
-        <tr>
             <td>#6</td>
             <td><span id="you61">..</span> | <span id="you62">..</span> | <span id="you63">..</span> | <span id="you64">..</span></td>
         </tr>
         <tr>
-            <td>Seven:</td>
-            <td><span id="seven1">-- --</span></td>
-        </tr>
         <tr>
             <td>#7</td>
             <td><span id="you71">..</span> | <span id="you72">..</span> | <span id="you73">..</span> | <span id="you74">..</span></td>
-        </tr>
-        <tr>
-            <td>Eight:</td>
-            <td><span id="eight1">--- ---</span></td>
         </tr>
         <tr>
             <td>#8</td>
             <td><span id="you81">..</span> | <span id="you82">..</span> | <span id="you83">..</span> | <span id="you84">..</span></td>
         </tr>
         <tr>
-            <td>Nine:</td>
-            <td><span id="nine1">-- --</span></td>
-        </tr>
-        <tr>
             <td>#9</td>
             <td><span id="you91">..</span> | <span id="you92">..</span> | <span id="you93">..</span> | <span id="you94">..</span></td>
-        </tr>
-        <tr>
-            <td>Ten:</td>
-            <td><span id="ten1">--- ---</span></td>
         </tr>
         <tr>
             <td>#10</td>
