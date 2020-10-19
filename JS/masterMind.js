@@ -2,7 +2,6 @@
 
     const colorKey = [
         "blue",
-        "tan",
         "yellow",
         "orange",
         "green",
@@ -11,17 +10,17 @@
     ];
     const hardColorKey = [
         "blue",
-        "red",
         "yellow",
         "orange",
         "green",
         "pink",
-        "white",
+        "brown",
         "lav",
         "purple",
         "grey",
         "lime",
-        "mint"
+        "mint",
+        "tan"
     ]
     let hardMode = document.getElementById("increaseDiff");
     let hard = false;
@@ -111,7 +110,17 @@
     let your104 = document.getElementById("you104");
 
     //response
-    let response = document.getElementById("one1");
+    let begin = document.getElementById("start");
+    let response1 = document.getElementById("one");
+    let response2 = document.getElementById("two");
+    let response3 = document.getElementById("three");
+    let response4 = document.getElementById("four");
+    let response5 = document.getElementById("five");
+    let response6 = document.getElementById("six");
+    let response7 = document.getElementById("seven");
+    let response8 = document.getElementById("eight");
+    let response9 = document.getElementById("nine");
+    let response10 = document.getElementById("ten");
 
     newGame.addEventListener("click", function () {
         if (hard) {
@@ -119,21 +128,22 @@
             sequence.push(hardColorKey[hardKey2]);
             sequence.push(hardColorKey[hardKey3]);
             sequence.push(hardColorKey[hardKey4]);
-            response.innerText = "Sequence Generated";
+            begin.innerText = "Sequence Generated";
         } else {
             sequence.push(colorKey[key1]);
             sequence.push(colorKey[key2]);
             sequence.push(colorKey[key3]);
             sequence.push(colorKey[key4]);
+            begin.innerText = "Sequence Generated";
         }
-        console.log("Answer Key: ");
-        console.log(sequence);
+        // console.log("Answer Key: ");
+        // console.log(sequence);
         done.addEventListener("click", function () {
             answer1.innerHTML = sequence[0];
             answer2.innerHTML = sequence[1];
             answer3.innerHTML = sequence[2];
             answer4.innerHTML = sequence[3];
-        })
+        });
     });
     assert.addEventListener("click", function(){
         onClick(count);
@@ -141,10 +151,10 @@
     });
 
     function onClick(){
+        let newKey = sequence;
+        let rCRS = 0;
+        let rCWS = 0;
         if (count === 0) {
-            let newKey = sequence;
-            let rCRS = 0;
-            let rCWS = 0;
             let first = guess1.value;
             let second = guess2.value;
             let third = guess3.value;
@@ -190,11 +200,8 @@
             if (rCRS === 4) {
                 gameWon.innerText = "Winner!";
             }
-            response.innerText = rCRS + " Red " + rCWS + " White";
+            response1.innerText = rCRS + " Red " + rCWS + " White";
         } else if (count === 1) {
-            let newKey = sequence;
-            let rCRS = 0;
-            let rCWS = 0;
             let first = guess1.value;
             let second = guess2.value;
             let third = guess3.value;
@@ -240,11 +247,8 @@
             if (rCRS === 4) {
                 gameWon.innerText = "Winner!";
             }
-            response.innerText = rCRS + " Red " + rCWS + " White";
+            response2.innerText = rCRS + " Red " + rCWS + " White";
         } else if (count === 2) {
-            let newKey = sequence;
-            let rCRS = 0;
-            let rCWS = 0;
             let first = guess1.value;
             let second = guess2.value;
             let third = guess3.value;
@@ -290,11 +294,8 @@
                 gameWon.innerText = "Winner!";
             }
 
-            response.innerText = rCRS + " Red " + rCWS + " White";
+            response3.innerText = rCRS + " Red " + rCWS + " White";
         } else if (count === 3) {
-            let newKey = sequence;
-            let rCRS = 0;
-            let rCWS = 0;
             let first = guess1.value;
             let second = guess2.value;
             let third = guess3.value;
@@ -340,11 +341,8 @@
             if (rCRS === 4) {
                 gameWon.innerText = "Winner!";
             }
-            response.innerText = rCRS + " Red " + rCWS + " White";
+            response4.innerText = rCRS + " Red " + rCWS + " White";
         } else if (count === 4) {
-            let newKey = sequence;
-            let rCRS = 0;
-            let rCWS = 0;
             let first = guess1.value;
             let second = guess2.value;
             let third = guess3.value;
@@ -391,11 +389,8 @@
                 gameWon.innerText = "Winner!";
             }
 
-            response.innerText = rCRS + " Red " + rCWS + " White";
+            response5.innerText = rCRS + " Red " + rCWS + " White";
         } else if (count === 5) {
-            let newKey = sequence;
-            let rCRS = 0;
-            let rCWS = 0;
             let first = guess1.value;
             let second = guess2.value;
             let third = guess3.value;
@@ -441,11 +436,8 @@
             if (rCRS === 4) {
                 gameWon.innerText = "Winner!";
             }
-            response.innerText = rCRS + " Red " + rCWS + " White";
+            response6.innerText = rCRS + " Red " + rCWS + " White";
         } else if (count === 6) {
-            let newKey = sequence;
-            let rCRS = 0;
-            let rCWS = 0;
             let first = guess1.value;
             let second = guess2.value;
             let third = guess3.value;
@@ -491,11 +483,8 @@
             if (rCRS === 4) {
                 gameWon.innerText = "Winner!";
             }
-            response.innerText = rCRS + " Red " + rCWS + " White";
+            response7.innerText = rCRS + " Red " + rCWS + " White";
         } else if (count === 7) {
-            let newKey = sequence;
-            let rCRS = 0;
-            let rCWS = 0;
             let first = guess1.value;
             let second = guess2.value;
             let third = guess3.value;
@@ -542,11 +531,8 @@
                 gameWon.innerText = "Winner!";
             }
 
-            response.innerText = rCRS + " Red " + rCWS + " White";
+            response8.innerText = rCRS + " Red " + rCWS + " White";
         } else if (count === 8) {
-            let newKey = sequence;
-            let rCRS = 0;
-            let rCWS = 0;
             let first = guess1.value;
             let second = guess2.value;
             let third = guess3.value;
@@ -592,11 +578,8 @@
             if (rCRS === 4) {
                 gameWon.innerText = "Winner!";
             }
-            response.innerText = rCRS + " Red " + rCWS + " White";
+            response9.innerText = rCRS + " Red " + rCWS + " White";
         } else if (count === 9) {
-            let newKey = sequence;
-            let rCRS = 0;
-            let rCWS = 0;
             let first = guess1.value;
             let second = guess2.value;
             let third = guess3.value;
@@ -642,7 +625,7 @@
             if (rCRS === 4) {
                 gameWon.innerText = "Winner!";
             }
-            response.innerText = rCRS + " Red " + rCWS + " White";
+            response10.innerText = rCRS + " Red " + rCWS + " White";
         }
     }
 })();
