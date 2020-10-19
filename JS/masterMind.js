@@ -6,19 +6,14 @@
 
     // do a loop and increment i through to 10, do if statements to then have it apply to the next block
 
-    // do an array splice of the key sequence if it is correct so it is not seen again
-
-    // answer = ["blue", "pink", "yellow", "black"];
-    // answerString = answer.join(" ");
-    // adjustedKey = answer.replace("blue", "");
-    // newString = adjustedKey.split(" ");
 
 
 
-    //if key is purple, white, black, blue
-    // and i input purple, red, blue, blue
-    // its current output is 2 red 1 white
-    // it should be 2 red and that is it
+    // bug one: key was pink, red, green, red
+    // guess was all red and output was 2 white, should have been 2 red
+
+    // bug two: key was pink, blue, pink, red
+    // guess was blue, red, pink, pink and response was 1 red 1 white (not sure how that happened)
 
     const colorKey = [
         "blue",
@@ -37,14 +32,15 @@
         "green",
         "pink",
         "white",
-        "black",
+        "lav",
         "purple",
         "grey",
-        "violet",
-        "cyan"
+        "brown",
+        "mint"
     ]
     let hardMode = document.getElementById("increaseDiff");
     let hard = false;
+    let isHard = document.getElementById("isHardMode");
     let hardKey1 = Math.floor(Math.random() * hardColorKey.length-1)+1;
     let hardKey2 = Math.floor(Math.random() * hardColorKey.length-1)+1;
     let hardKey3 = Math.floor(Math.random() * hardColorKey.length-1)+1;
@@ -53,6 +49,7 @@
        hard = true;
        hardMode.style.color = "aliceblue";
        hardMode.style.background =  "black";
+       isHard.innerText = "Enabled";
     });
 
     let key1 = Math.floor(Math.random() * colorKey.length-1) + 1;
@@ -176,36 +173,34 @@
         your13.innerHTML = third;
         your14.innerHTML = fourth;
 
-        if((first === newKey[0] || second === newKey[1] || third === newKey[2] || fourth === newKey[3]) || newKey.indexOf(first) !== -1 || newKey.indexOf(second) !== -1 || newKey.indexOf(third) !== -1 || newKey.indexOf(fourth) !== -1) {
-            if (first === newKey[0]) {
-                rCRS++;
-                newKey = newKey.join(" ").replace(first, "").split(" ");
-            }else if (newKey.indexOf(first) !== -1) {
-                rCWS++;
-                newKey = newKey.join(" ").replace(first, "").split(" ");
-            }
-            if (second === newKey[1]) {
-                rCRS++;
-                newKey = newKey.join(" ").replace(first, "").split(" ");
-            } else if (newKey.indexOf(second) !== -1) {
-                rCWS++;
-                newKey = newKey.join(" ").replace(first, "").split(" ");
-            }
-            if (third === newKey[2]) {
-                rCRS++;
-                newKey = newKey.join(" ").replace(first, "").split(" ");
-            } else if (newKey.indexOf(third) !== -1) {
-                rCWS++;
-                newKey = newKey.join(" ").replace(first, "").split(" ");
-            }
-            if (fourth === newKey[3]) {
-                rCRS++;
-                newKey = newKey.join(" ").replace(first, "").split(" ");
-            }else if (newKey.indexOf(fourth) !== -1) {
-                rCWS++;
-                newKey = newKey.join(" ").replace(first, "").split(" ");
-            }
-        }
+      if (first === newKey[0]) {
+          rCRS++;
+          newKey = newKey.join(" ").replace(first, "").split(" ");
+      }
+      if (second === newKey[1]) {
+          rCRS++;
+          newKey = newKey.join(" ").replace(second, "").split(" ");
+      }
+      if (third === newKey[2]) {
+          rCRS++;
+          newKey = newKey.join(" ").replace(third, "").split(" ");
+      }
+      if (fourth === newKey[3]) {
+          rCRS++;
+          newKey = newKey.join(" ").replace(fourth, "").split(" ");
+      }else if (newKey.indexOf(first) !== -1) {
+          rCWS++;
+          newKey = newKey.join(" ").replace(first, "").split(" ");
+      } else if (newKey.indexOf(second) !== -1) {
+          rCWS++;
+          newKey = newKey.join(" ").replace(second, "").split(" ");
+      } else if (newKey.indexOf(third) !== -1) {
+          rCWS++;
+          newKey = newKey.join(" ").replace(third, "").split(" ");
+      } else if (newKey.indexOf(fourth) !== -1) {
+          rCWS++;
+          newKey = newKey.join(" ").replace(fourth, "").split(" ");
+      }
 
         if(rCRS === 4){
             gameWon.innerText = "Winner!";
@@ -225,36 +220,35 @@
             your23.innerHTML = third;
             your24.innerHTML = fourth;
 
-            if((first === newKey[0] || second === newKey[1] || third === newKey[2] || fourth === newKey[3]) || newKey.indexOf(first) !== -1 || newKey.indexOf(second) !== -1 || newKey.indexOf(third) !== -1 || newKey.indexOf(fourth) !== -1) {
-                if (first === newKey[0]) {
-                    rCRS++;
-                    newKey = newKey.join(" ").replace(first, "").split(" ");
-                }else if (newKey.indexOf(first) !== -1) {
-                    rCWS++;
-                    newKey = newKey.join(" ").replace(first, "").split(" ");
-                }
-                if (second === newKey[1]) {
-                    rCRS++;
-                    newKey = newKey.join(" ").replace(first, "").split(" ");
-                } else if (newKey.indexOf(second) !== -1) {
-                    rCWS++;
-                    newKey = newKey.join(" ").replace(first, "").split(" ");
-                }
-                if (third === newKey[2]) {
-                    rCRS++;
-                    newKey = newKey.join(" ").replace(first, "").split(" ");
-                } else if (newKey.indexOf(third) !== -1) {
-                    rCWS++;
-                    newKey = newKey.join(" ").replace(first, "").split(" ");
-                }
-                if (fourth === newKey[3]) {
-                    rCRS++;
-                    newKey = newKey.join(" ").replace(first, "").split(" ");
-                }else if (newKey.indexOf(fourth) !== -1) {
-                    rCWS++;
-                    newKey = newKey.join(" ").replace(first, "").split(" ");
-                }
+            if (first === newKey[0]) {
+                rCRS++;
+                newKey = newKey.join(" ").replace(first, "").split(" ");
             }
+            if (second === newKey[1]) {
+                rCRS++;
+                newKey = newKey.join(" ").replace(second, "").split(" ");
+            }
+            if (third === newKey[2]) {
+                rCRS++;
+                newKey = newKey.join(" ").replace(third, "").split(" ");
+            }
+            if (fourth === newKey[3]) {
+                rCRS++;
+                newKey = newKey.join(" ").replace(fourth, "").split(" ");
+            }else if (newKey.indexOf(first) !== -1) {
+                rCWS++;
+                newKey = newKey.join(" ").replace(first, "").split(" ");
+            } else if (newKey.indexOf(second) !== -1) {
+                rCWS++;
+                newKey = newKey.join(" ").replace(second, "").split(" ");
+            } else if (newKey.indexOf(third) !== -1) {
+                rCWS++;
+                newKey = newKey.join(" ").replace(third, "").split(" ");
+            } else if (newKey.indexOf(fourth) !== -1) {
+                rCWS++;
+                newKey = newKey.join(" ").replace(fourth, "").split(" ");
+            }
+
             if(rCRS === 4){
                 gameWon.innerText = "Winner!";
             }
@@ -273,36 +267,35 @@
                 your33.innerHTML = third;
                 your34.innerHTML = fourth;
 
-                if((first === newKey[0] || second === newKey[1] || third === newKey[2] || fourth === newKey[3]) || newKey.indexOf(first) !== -1 || newKey.indexOf(second) !== -1 || newKey.indexOf(third) !== -1 || newKey.indexOf(fourth) !== -1) {
-                    if (first === newKey[0]) {
-                        rCRS++;
-                        newKey = newKey.join(" ").replace(first, "").split(" ");
-                    }else if (newKey.indexOf(first) !== -1) {
-                        rCWS++;
-                        newKey = newKey.join(" ").replace(first, "").split(" ");
-                    }
-                    if (second === newKey[1]) {
-                        rCRS++;
-                        newKey = newKey.join(" ").replace(first, "").split(" ");
-                    } else if (newKey.indexOf(second) !== -1) {
-                        rCWS++;
-                        newKey = newKey.join(" ").replace(first, "").split(" ");
-                    }
-                    if (third === newKey[2]) {
-                        rCRS++;
-                        newKey = newKey.join(" ").replace(first, "").split(" ");
-                    } else if (newKey.indexOf(third) !== -1) {
-                        rCWS++;
-                        newKey = newKey.join(" ").replace(first, "").split(" ");
-                    }
-                    if (fourth === newKey[3]) {
-                        rCRS++;
-                        newKey = newKey.join(" ").replace(first, "").split(" ");
-                    }else if (newKey.indexOf(fourth) !== -1) {
-                        rCWS++;
-                        newKey = newKey.join(" ").replace(first, "").split(" ");
-                    }
+                if (first === newKey[0]) {
+                    rCRS++;
+                    newKey = newKey.join(" ").replace(first, "").split(" ");
                 }
+                if (second === newKey[1]) {
+                    rCRS++;
+                    newKey = newKey.join(" ").replace(second, "").split(" ");
+                }
+                if (third === newKey[2]) {
+                    rCRS++;
+                    newKey = newKey.join(" ").replace(third, "").split(" ");
+                }
+                if (fourth === newKey[3]) {
+                    rCRS++;
+                    newKey = newKey.join(" ").replace(fourth, "").split(" ");
+                }else if (newKey.indexOf(first) !== -1) {
+                    rCWS++;
+                    newKey = newKey.join(" ").replace(first, "").split(" ");
+                } else if (newKey.indexOf(second) !== -1) {
+                    rCWS++;
+                    newKey = newKey.join(" ").replace(second, "").split(" ");
+                } else if (newKey.indexOf(third) !== -1) {
+                    rCWS++;
+                    newKey = newKey.join(" ").replace(third, "").split(" ");
+                } else if (newKey.indexOf(fourth) !== -1) {
+                    rCWS++;
+                    newKey = newKey.join(" ").replace(fourth, "").split(" ");
+                }
+
                 r31.innerText = rCRS + " Red " + rCWS + " White";
 
                 assert.addEventListener("click", function (){
@@ -318,36 +311,35 @@
                     your43.innerHTML = third;
                     your44.innerHTML = fourth;
 
-                    if((first === newKey[0] || second === newKey[1] || third === newKey[2] || fourth === newKey[3]) || newKey.indexOf(first) !== -1 || newKey.indexOf(second) !== -1 || newKey.indexOf(third) !== -1 || newKey.indexOf(fourth) !== -1) {
-                        if (first === newKey[0]) {
-                            rCRS++;
-                            newKey = newKey.join(" ").replace(first, "").split(" ");
-                        }else if (newKey.indexOf(first) !== -1) {
-                            rCWS++;
-                            newKey = newKey.join(" ").replace(first, "").split(" ");
-                        }
-                        if (second === newKey[1]) {
-                            rCRS++;
-                            newKey = newKey.join(" ").replace(first, "").split(" ");
-                        } else if (newKey.indexOf(second) !== -1) {
-                            rCWS++;
-                            newKey = newKey.join(" ").replace(first, "").split(" ");
-                        }
-                        if (third === newKey[2]) {
-                            rCRS++;
-                            newKey = newKey.join(" ").replace(first, "").split(" ");
-                        } else if (newKey.indexOf(third) !== -1) {
-                            rCWS++;
-                            newKey = newKey.join(" ").replace(first, "").split(" ");
-                        }
-                        if (fourth === newKey[3]) {
-                            rCRS++;
-                            newKey = newKey.join(" ").replace(first, "").split(" ");
-                        }else if (newKey.indexOf(fourth) !== -1) {
-                            rCWS++;
-                            newKey = newKey.join(" ").replace(first, "").split(" ");
-                        }
+                    if (first === newKey[0]) {
+                        rCRS++;
+                        newKey = newKey.join(" ").replace(first, "").split(" ");
                     }
+                    if (second === newKey[1]) {
+                        rCRS++;
+                        newKey = newKey.join(" ").replace(second, "").split(" ");
+                    }
+                    if (third === newKey[2]) {
+                        rCRS++;
+                        newKey = newKey.join(" ").replace(third, "").split(" ");
+                    }
+                    if (fourth === newKey[3]) {
+                        rCRS++;
+                        newKey = newKey.join(" ").replace(fourth, "").split(" ");
+                    }else if (newKey.indexOf(first) !== -1) {
+                        rCWS++;
+                        newKey = newKey.join(" ").replace(first, "").split(" ");
+                    } else if (newKey.indexOf(second) !== -1) {
+                        rCWS++;
+                        newKey = newKey.join(" ").replace(second, "").split(" ");
+                    } else if (newKey.indexOf(third) !== -1) {
+                        rCWS++;
+                        newKey = newKey.join(" ").replace(third, "").split(" ");
+                    } else if (newKey.indexOf(fourth) !== -1) {
+                        rCWS++;
+                        newKey = newKey.join(" ").replace(fourth, "").split(" ");
+                    }
+
                     if(rCRS === 4){
                         gameWon.innerText = "Winner!";
                     }
@@ -366,36 +358,35 @@
                         your53.innerHTML = third;
                         your54.innerHTML = fourth;
 
-                        if((first === newKey[0] || second === newKey[1] || third === newKey[2] || fourth === newKey[3]) || newKey.indexOf(first) !== -1 || newKey.indexOf(second) !== -1 || newKey.indexOf(third) !== -1 || newKey.indexOf(fourth) !== -1) {
-                            if (first === newKey[0]) {
-                                rCRS++;
-                                newKey = newKey.join(" ").replace(first, "").split(" ");
-                            }else if (newKey.indexOf(first) !== -1) {
-                                rCWS++;
-                                newKey = newKey.join(" ").replace(first, "").split(" ");
-                            }
-                            if (second === newKey[1]) {
-                                rCRS++;
-                                newKey = newKey.join(" ").replace(first, "").split(" ");
-                            } else if (newKey.indexOf(second) !== -1) {
-                                rCWS++;
-                                newKey = newKey.join(" ").replace(first, "").split(" ");
-                            }
-                            if (third === newKey[2]) {
-                                rCRS++;
-                                newKey = newKey.join(" ").replace(first, "").split(" ");
-                            } else if (newKey.indexOf(third) !== -1) {
-                                rCWS++;
-                                newKey = newKey.join(" ").replace(first, "").split(" ");
-                            }
-                            if (fourth === newKey[3]) {
-                                rCRS++;
-                                newKey = newKey.join(" ").replace(first, "").split(" ");
-                            }else if (newKey.indexOf(fourth) !== -1) {
-                                rCWS++;
-                                newKey = newKey.join(" ").replace(first, "").split(" ");
-                            }
+                        if (first === newKey[0]) {
+                            rCRS++;
+                            newKey = newKey.join(" ").replace(first, "").split(" ");
                         }
+                        if (second === newKey[1]) {
+                            rCRS++;
+                            newKey = newKey.join(" ").replace(second, "").split(" ");
+                        }
+                        if (third === newKey[2]) {
+                            rCRS++;
+                            newKey = newKey.join(" ").replace(third, "").split(" ");
+                        }
+                        if (fourth === newKey[3]) {
+                            rCRS++;
+                            newKey = newKey.join(" ").replace(fourth, "").split(" ");
+                        }else if (newKey.indexOf(first) !== -1) {
+                            rCWS++;
+                            newKey = newKey.join(" ").replace(first, "").split(" ");
+                        } else if (newKey.indexOf(second) !== -1) {
+                            rCWS++;
+                            newKey = newKey.join(" ").replace(second, "").split(" ");
+                        } else if (newKey.indexOf(third) !== -1) {
+                            rCWS++;
+                            newKey = newKey.join(" ").replace(third, "").split(" ");
+                        } else if (newKey.indexOf(fourth) !== -1) {
+                            rCWS++;
+                            newKey = newKey.join(" ").replace(fourth, "").split(" ");
+                        }
+
                         r51.innerText = rCRS + " Red " + rCWS + " White";
 
                         assert.addEventListener("click", function (){
@@ -411,36 +402,35 @@
                             your63.innerHTML = third;
                             your64.innerHTML = fourth;
 
-                            if((first === newKey[0] || second === newKey[1] || third === newKey[2] || fourth === newKey[3]) || newKey.indexOf(first) !== -1 || newKey.indexOf(second) !== -1 || newKey.indexOf(third) !== -1 || newKey.indexOf(fourth) !== -1) {
-                                if (first === newKey[0]) {
-                                    rCRS++;
-                                    newKey = newKey.join(" ").replace(first, "").split(" ");
-                                }else if (newKey.indexOf(first) !== -1) {
-                                    rCWS++;
-                                    newKey = newKey.join(" ").replace(first, "").split(" ");
-                                }
-                                if (second === newKey[1]) {
-                                    rCRS++;
-                                    newKey = newKey.join(" ").replace(first, "").split(" ");
-                                } else if (newKey.indexOf(second) !== -1) {
-                                    rCWS++;
-                                    newKey = newKey.join(" ").replace(first, "").split(" ");
-                                }
-                                if (third === newKey[2]) {
-                                    rCRS++;
-                                    newKey = newKey.join(" ").replace(first, "").split(" ");
-                                } else if (newKey.indexOf(third) !== -1) {
-                                    rCWS++;
-                                    newKey = newKey.join(" ").replace(first, "").split(" ");
-                                }
-                                if (fourth === newKey[3]) {
-                                    rCRS++;
-                                    newKey = newKey.join(" ").replace(first, "").split(" ");
-                                }else if (newKey.indexOf(fourth) !== -1) {
-                                    rCWS++;
-                                    newKey = newKey.join(" ").replace(first, "").split(" ");
-                                }
+                            if (first === newKey[0]) {
+                                rCRS++;
+                                newKey = newKey.join(" ").replace(first, "").split(" ");
                             }
+                            if (second === newKey[1]) {
+                                rCRS++;
+                                newKey = newKey.join(" ").replace(second, "").split(" ");
+                            }
+                            if (third === newKey[2]) {
+                                rCRS++;
+                                newKey = newKey.join(" ").replace(third, "").split(" ");
+                            }
+                            if (fourth === newKey[3]) {
+                                rCRS++;
+                                newKey = newKey.join(" ").replace(fourth, "").split(" ");
+                            }else if (newKey.indexOf(first) !== -1) {
+                                rCWS++;
+                                newKey = newKey.join(" ").replace(first, "").split(" ");
+                            } else if (newKey.indexOf(second) !== -1) {
+                                rCWS++;
+                                newKey = newKey.join(" ").replace(second, "").split(" ");
+                            } else if (newKey.indexOf(third) !== -1) {
+                                rCWS++;
+                                newKey = newKey.join(" ").replace(third, "").split(" ");
+                            } else if (newKey.indexOf(fourth) !== -1) {
+                                rCWS++;
+                                newKey = newKey.join(" ").replace(fourth, "").split(" ");
+                            }
+
                             if(rCRS === 4){
                                 gameWon.innerText = "Winner!";
                             }
@@ -459,36 +449,35 @@
                                 your73.innerHTML = third;
                                 your74.innerHTML = fourth;
 
-                                if((first === newKey[0] || second === newKey[1] || third === newKey[2] || fourth === newKey[3]) || newKey.indexOf(first) !== -1 || newKey.indexOf(second) !== -1 || newKey.indexOf(third) !== -1 || newKey.indexOf(fourth) !== -1) {
-                                    if (first === newKey[0]) {
-                                        rCRS++;
-                                        newKey = newKey.join(" ").replace(first, "").split(" ");
-                                    }else if (newKey.indexOf(first) !== -1) {
-                                        rCWS++;
-                                        newKey = newKey.join(" ").replace(first, "").split(" ");
-                                    }
-                                    if (second === newKey[1]) {
-                                        rCRS++;
-                                        newKey = newKey.join(" ").replace(first, "").split(" ");
-                                    } else if (newKey.indexOf(second) !== -1) {
-                                        rCWS++;
-                                        newKey = newKey.join(" ").replace(first, "").split(" ");
-                                    }
-                                    if (third === newKey[2]) {
-                                        rCRS++;
-                                        newKey = newKey.join(" ").replace(first, "").split(" ");
-                                    } else if (newKey.indexOf(third) !== -1) {
-                                        rCWS++;
-                                        newKey = newKey.join(" ").replace(first, "").split(" ");
-                                    }
-                                    if (fourth === newKey[3]) {
-                                        rCRS++;
-                                        newKey = newKey.join(" ").replace(first, "").split(" ");
-                                    }else if (newKey.indexOf(fourth) !== -1) {
-                                        rCWS++;
-                                        newKey = newKey.join(" ").replace(first, "").split(" ");
-                                    }
+                                if (first === newKey[0]) {
+                                    rCRS++;
+                                    newKey = newKey.join(" ").replace(first, "").split(" ");
                                 }
+                                if (second === newKey[1]) {
+                                    rCRS++;
+                                    newKey = newKey.join(" ").replace(second, "").split(" ");
+                                }
+                                if (third === newKey[2]) {
+                                    rCRS++;
+                                    newKey = newKey.join(" ").replace(third, "").split(" ");
+                                }
+                                if (fourth === newKey[3]) {
+                                    rCRS++;
+                                    newKey = newKey.join(" ").replace(fourth, "").split(" ");
+                                }else if (newKey.indexOf(first) !== -1) {
+                                    rCWS++;
+                                    newKey = newKey.join(" ").replace(first, "").split(" ");
+                                } else if (newKey.indexOf(second) !== -1) {
+                                    rCWS++;
+                                    newKey = newKey.join(" ").replace(second, "").split(" ");
+                                } else if (newKey.indexOf(third) !== -1) {
+                                    rCWS++;
+                                    newKey = newKey.join(" ").replace(third, "").split(" ");
+                                } else if (newKey.indexOf(fourth) !== -1) {
+                                    rCWS++;
+                                    newKey = newKey.join(" ").replace(fourth, "").split(" ");
+                                }
+
                                 if(rCRS === 4){
                                     gameWon.innerText = "Winner!";
                                 }
@@ -507,36 +496,35 @@
                                     your83.innerHTML = third;
                                     your84.innerHTML = fourth;
 
-                                    if((first === newKey[0] || second === newKey[1] || third === newKey[2] || fourth === newKey[3]) || newKey.indexOf(first) !== -1 || newKey.indexOf(second) !== -1 || newKey.indexOf(third) !== -1 || newKey.indexOf(fourth) !== -1) {
-                                        if (first === newKey[0]) {
-                                            rCRS++;
-                                            newKey = newKey.join(" ").replace(first, "").split(" ");
-                                        }else if (newKey.indexOf(first) !== -1) {
-                                            rCWS++;
-                                            newKey = newKey.join(" ").replace(first, "").split(" ");
-                                        }
-                                        if (second === newKey[1]) {
-                                            rCRS++;
-                                            newKey = newKey.join(" ").replace(first, "").split(" ");
-                                        } else if (newKey.indexOf(second) !== -1) {
-                                            rCWS++;
-                                            newKey = newKey.join(" ").replace(first, "").split(" ");
-                                        }
-                                        if (third === newKey[2]) {
-                                            rCRS++;
-                                            newKey = newKey.join(" ").replace(first, "").split(" ");
-                                        } else if (newKey.indexOf(third) !== -1) {
-                                            rCWS++;
-                                            newKey = newKey.join(" ").replace(first, "").split(" ");
-                                        }
-                                        if (fourth === newKey[3]) {
-                                            rCRS++;
-                                            newKey = newKey.join(" ").replace(first, "").split(" ");
-                                        }else if (newKey.indexOf(fourth) !== -1) {
-                                            rCWS++;
-                                            newKey = newKey.join(" ").replace(first, "").split(" ");
-                                        }
+                                    if (first === newKey[0]) {
+                                        rCRS++;
+                                        newKey = newKey.join(" ").replace(first, "").split(" ");
                                     }
+                                    if (second === newKey[1]) {
+                                        rCRS++;
+                                        newKey = newKey.join(" ").replace(second, "").split(" ");
+                                    }
+                                    if (third === newKey[2]) {
+                                        rCRS++;
+                                        newKey = newKey.join(" ").replace(third, "").split(" ");
+                                    }
+                                    if (fourth === newKey[3]) {
+                                        rCRS++;
+                                        newKey = newKey.join(" ").replace(fourth, "").split(" ");
+                                    }else if (newKey.indexOf(first) !== -1) {
+                                        rCWS++;
+                                        newKey = newKey.join(" ").replace(first, "").split(" ");
+                                    } else if (newKey.indexOf(second) !== -1) {
+                                        rCWS++;
+                                        newKey = newKey.join(" ").replace(second, "").split(" ");
+                                    } else if (newKey.indexOf(third) !== -1) {
+                                        rCWS++;
+                                        newKey = newKey.join(" ").replace(third, "").split(" ");
+                                    } else if (newKey.indexOf(fourth) !== -1) {
+                                        rCWS++;
+                                        newKey = newKey.join(" ").replace(fourth, "").split(" ");
+                                    }
+
                                     r81.innerText = rCRS + " Red " + rCWS + " White";
 
                                     assert.addEventListener("click", function (){
@@ -552,36 +540,35 @@
                                         your93.innerHTML = third;
                                         your94.innerHTML = fourth;
 
-                                        if((first === newKey[0] || second === newKey[1] || third === newKey[2] || fourth === newKey[3]) || newKey.indexOf(first) !== -1 || newKey.indexOf(second) !== -1 || newKey.indexOf(third) !== -1 || newKey.indexOf(fourth) !== -1) {
-                                            if (first === newKey[0]) {
-                                                rCRS++;
-                                                newKey = newKey.join(" ").replace(first, "").split(" ");
-                                            }else if (newKey.indexOf(first) !== -1) {
-                                                rCWS++;
-                                                newKey = newKey.join(" ").replace(first, "").split(" ");
-                                            }
-                                            if (second === newKey[1]) {
-                                                rCRS++;
-                                                newKey = newKey.join(" ").replace(first, "").split(" ");
-                                            } else if (newKey.indexOf(second) !== -1) {
-                                                rCWS++;
-                                                newKey = newKey.join(" ").replace(first, "").split(" ");
-                                            }
-                                            if (third === newKey[2]) {
-                                                rCRS++;
-                                                newKey = newKey.join(" ").replace(first, "").split(" ");
-                                            } else if (newKey.indexOf(third) !== -1) {
-                                                rCWS++;
-                                                newKey = newKey.join(" ").replace(first, "").split(" ");
-                                            }
-                                            if (fourth === newKey[3]) {
-                                                rCRS++;
-                                                newKey = newKey.join(" ").replace(first, "").split(" ");
-                                            }else if (newKey.indexOf(fourth) !== -1) {
-                                                rCWS++;
-                                                newKey = newKey.join(" ").replace(first, "").split(" ");
-                                            }
+                                        if (first === newKey[0]) {
+                                            rCRS++;
+                                            newKey = newKey.join(" ").replace(first, "").split(" ");
                                         }
+                                        if (second === newKey[1]) {
+                                            rCRS++;
+                                            newKey = newKey.join(" ").replace(second, "").split(" ");
+                                        }
+                                        if (third === newKey[2]) {
+                                            rCRS++;
+                                            newKey = newKey.join(" ").replace(third, "").split(" ");
+                                        }
+                                        if (fourth === newKey[3]) {
+                                            rCRS++;
+                                            newKey = newKey.join(" ").replace(fourth, "").split(" ");
+                                        }else if (newKey.indexOf(first) !== -1) {
+                                            rCWS++;
+                                            newKey = newKey.join(" ").replace(first, "").split(" ");
+                                        } else if (newKey.indexOf(second) !== -1) {
+                                            rCWS++;
+                                            newKey = newKey.join(" ").replace(second, "").split(" ");
+                                        } else if (newKey.indexOf(third) !== -1) {
+                                            rCWS++;
+                                            newKey = newKey.join(" ").replace(third, "").split(" ");
+                                        } else if (newKey.indexOf(fourth) !== -1) {
+                                            rCWS++;
+                                            newKey = newKey.join(" ").replace(fourth, "").split(" ");
+                                        }
+
                                         if(rCRS === 4){
                                             gameWon.innerText = "Winner!";
                                         }
@@ -600,35 +587,33 @@
                                             your103.innerHTML = third;
                                             your104.innerHTML = fourth;
 
-                                            if((first === newKey[0] || second === newKey[1] || third === newKey[2] || fourth === newKey[3]) || newKey.indexOf(first) !== -1 || newKey.indexOf(second) !== -1 || newKey.indexOf(third) !== -1 || newKey.indexOf(fourth) !== -1) {
-                                                if (first === newKey[0]) {
-                                                    rCRS++;
-                                                    newKey = newKey.join(" ").replace(first, "").split(" ");
-                                                }else if (newKey.indexOf(first) !== -1) {
-                                                    rCWS++;
-                                                    newKey = newKey.join(" ").replace(first, "").split(" ");
-                                                }
-                                                if (second === newKey[1]) {
-                                                    rCRS++;
-                                                    newKey = newKey.join(" ").replace(first, "").split(" ");
-                                                } else if (newKey.indexOf(second) !== -1) {
-                                                    rCWS++;
-                                                    newKey = newKey.join(" ").replace(first, "").split(" ");
-                                                }
-                                                if (third === newKey[2]) {
-                                                    rCRS++;
-                                                    newKey = newKey.join(" ").replace(first, "").split(" ");
-                                                } else if (newKey.indexOf(third) !== -1) {
-                                                    rCWS++;
-                                                    newKey = newKey.join(" ").replace(first, "").split(" ");
-                                                }
-                                                if (fourth === newKey[3]) {
-                                                    rCRS++;
-                                                    newKey = newKey.join(" ").replace(first, "").split(" ");
-                                                }else if (newKey.indexOf(fourth) !== -1) {
-                                                    rCWS++;
-                                                    newKey = newKey.join(" ").replace(first, "").split(" ");
-                                                }
+                                            if (first === newKey[0]) {
+                                                rCRS++;
+                                                newKey = newKey.join(" ").replace(first, "").split(" ");
+                                            }
+                                            if (second === newKey[1]) {
+                                                rCRS++;
+                                                newKey = newKey.join(" ").replace(second, "").split(" ");
+                                            }
+                                            if (third === newKey[2]) {
+                                                rCRS++;
+                                                newKey = newKey.join(" ").replace(third, "").split(" ");
+                                            }
+                                            if (fourth === newKey[3]) {
+                                                rCRS++;
+                                                newKey = newKey.join(" ").replace(fourth, "").split(" ");
+                                            }else if (newKey.indexOf(first) !== -1) {
+                                                rCWS++;
+                                                newKey = newKey.join(" ").replace(first, "").split(" ");
+                                            } else if (newKey.indexOf(second) !== -1) {
+                                                rCWS++;
+                                                newKey = newKey.join(" ").replace(second, "").split(" ");
+                                            } else if (newKey.indexOf(third) !== -1) {
+                                                rCWS++;
+                                                newKey = newKey.join(" ").replace(third, "").split(" ");
+                                            } else if (newKey.indexOf(fourth) !== -1) {
+                                                rCWS++;
+                                                newKey = newKey.join(" ").replace(fourth, "").split(" ");
                                             }
                                             if(rCRS === 4){
                                                 gameWon.innerText = "Winner!";

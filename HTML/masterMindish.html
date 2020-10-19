@@ -6,36 +6,43 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../CSS/masterMindish.css">
-    <title>Mastermind</title>
+    <link href='https://fonts.googleapis.com/css?family=Press Start 2P' rel='stylesheet'>
+    <title>Color Code Break</title>
 </head>
 <body>
-<h1 id="top">Master Mind Style Game</h1>
-<h3>Red = right color right spot, White = right color wrong spot</h3>
-<h5>(no particular order)</h5><hr>
-<p><span><strong>Options: </strong><em>(Type in lower case)  </em></span>blue, red, yellow, orange, green, white and pink</p><hr>
-<button id="increaseDiff">Hard Mode</button><br>
-<p>(Add grey, cyan, black, purple and violet)</p><br>
-<button id="newGame">NewGame</button><br>
-<textarea rows="5" cols="40" placeholder="Note attempts here"></textarea>
+<main class="shadow">
+<h1 id="top">Break Me</h1>
+<h2><span class="red">Red</span> = right color right spot, <span class="white">White</span> = right color wrong spot</h2>
+<h5>(no particular order)</h5><br>
+<p><span><strong>Options: </strong><em>(Type in lower case)  </em></span><span class="blue">blue</span>, <span class="red">red</span>, <span class="yellow">yellow</span>, <span class="orange">orange</span>, <span class="green">green</span>, <span class="white">white</span> and <span class="pink">pink</span></p><br>
+<button id="increaseDiff">Hard Mode</button><p id="isHardMode"></p><br>
+<p class="otherColors">(Add <span class="grey">grey</span>, <span class="mint">mint</span>, <span class="lav">lav</span>, <span class="purple">purple</span> and <span class="brown">brown</span>)</p><br>
+</main>
+<button id="newGame">Start Game</button><br>
+<textarea rows="8" cols="100" placeholder="Note attempts here (Not in:---, Possible:---, In:---)" class="notes"></textarea>
 <div class="gameBoard">
-    <label for="colorInput1">First Color</label>
-    <input id="colorInput1" type="text" placeholder="first color" onfocus="this.value=''"><hr>
-    <label for="colorInput2">Second Color</label>
-    <input id="colorInput2" type="text" placeholder="second color" onfocus="this.value=''"><hr>
-    <label for="colorInput3">Third Color</label>
-    <input id="colorInput3" type="text" placeholder="third color" onfocus="this.value=''"><hr>
-    <label for="colorInput4">Fourth Color</label>
-    <input id="colorInput4" type="text" placeholder="fourth color" onfocus="this.value=''"><hr>
+    <div class="inputs">
+        <label for="colorInput1">First Color </label>
+        <input class="colorGuess" id="colorInput1" type="text" placeholder="text" onfocus="this.value=''"><br>
+    </div>
+    <div class="inputs">
+        <label for="colorInput2">Second Color </label>
+        <input class="colorGuess"  id="colorInput2" type="text" placeholder="text" onfocus="this.value=''"><br>
+    </div>
+    <div class="inputs">
+        <label for="colorInput3">Third Color </label>
+        <input class="colorGuess"  id="colorInput3" type="text" placeholder="text" onfocus="this.value=''"><br>
+    </div>
+    <div class="inputs">
+        <label for="colorInput4">Fourth Color </label>
+        <input class="colorGuess"  id="colorInput4" type="text" placeholder="text" onfocus="this.value=''"><br>
+    </div>
     <button type="submit" id="submit">Assert</button><br>
-    <p id="winner"></p><hr>
+    <p id="winner"></p><br>
 </div>
 <div id="responses">
     <h3>Response:</h3>
     <table class="guesses">
-        <tr>
-            <th>You</th>
-            <th>Computer</th>
-        </tr>
         <tr>
             <td>First:</td>
             <td><span id="one1">-- --</span></td>
@@ -120,9 +127,9 @@
     <button id="done">Finish</button>
 </div>
 <div class="answerKey">
-    <h1>Answer key:</h1>
-    <h2><span id="key1">--- ---</span> | <span id="key2">-- --</span> | <span id="key3">-- --</span> | <span id="key4">-- --</span></h2><hr>
-    <p id="link">Go To Top -><a href="#top">Click</a></p><hr>
+    <h3>Answer key:</h3>
+    <h2><span id="key1">--- ---</span> | <span id="key2">-- --</span> | <span id="key3">-- --</span> | <span id="key4">-- --</span></h2><br>
+    <p id="link">Go To Top -> <a href="#top">Click</a></p><br>
   </div>
 <script src="../JS/masterMind.js"></script>
 </body>
