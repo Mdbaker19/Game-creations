@@ -32,20 +32,25 @@
     const allCards = [
         1, 2, 3, 4, 5, 6, 7, 8, 9,
         king, queen, jack, ace
-    ]; // 13 items
-
-    //cards held array, add an element with each hit, array for each add an item and display
+    ];
 
     window.onload = function () {
         dealerChips.innerHTML = pChipAmount;
         playerChips.innerHTML = dChipAmount;
 
+        let pickDealerCard1 = Math.floor(Math.random() * 13);
+        let pickDealerCard2 = Math.floor(Math.random() * 13);
+        let pickDealerCard3 = Math.floor(Math.random() * 13);
+        let pickDealerCard4 = Math.floor(Math.random() * 13);
+        let pickDealerCard5 = Math.floor(Math.random() * 13);
+
         submitBet.addEventListener("click", function bet(){
-            if(dChipAmount >= 24){
-                var dealerBetRandom = Math.floor(Math.random() * 20) + 5;
-            } else if(dChipAmount < 24){
+            if(dChipAmount >= 21){
+                var dealerBetRandom = Math.floor(Math.random() * 17) + 5;
+            } else if(dChipAmount < 21){
                 dealerBetRandom = Math.floor(Math.random() * dChipAmount) + 1;
             }
+            submitBet.disabled = true;
             dealerBet.innerHTML = dealerBetRandom;
             playerBet.innerHTML = placeBet.value;
             pChipAmount -= placeBet.value;
@@ -53,64 +58,155 @@
             dChipAmount -= dealerBetRandom;
             dealerChips.innerHTML = dChipAmount;
 
-        });
+            let d1 = parseFloat(allCards[pickDealerCard1]);
+            let d2 = parseFloat(allCards[pickDealerCard2]);
+            let d3 = parseFloat(allCards[pickDealerCard3]);
+            let d4 = parseFloat(allCards[pickDealerCard4]);
+            let d5 = parseFloat(allCards[pickDealerCard5]);
 
-        dealOutCards.addEventListener("click", function start() {
-            let pickCard1 = Math.floor(Math.random() * 13);
-            let pickCard2 = Math.floor(Math.random() * 13);
-            let playerTotal1And2 = pickCard1 + pickCard2;
-            let pickDealerCard1 = Math.floor(Math.random() * 13);
-            dealerExtraCards.innerHTML = "-";
-            playerExtraCards.innerHTML = "-";
-            pCard1.innerHTML = allCards[pickCard1];
-            pCard2.innerHTML = allCards[pickCard2];
-            dCard1.innerHTML = allCards[pickDealerCard1];
-            dCard2.innerHTML = "X"
-            dCard3.innerHTML = "x-"
-            dCard4.innerHTML = "-x-"
-            dCard5.innerHTML = "-x"
-            pCard3.innerHTML = "x-"
-            pCard4.innerHTML = "-x-"
-            pCard5.innerHTML = "-x"
+            let d1And2 = d1 + d2;
+            let d3Total = d1And2 + d3;
+            let d4Total = d3Total + d4;
+            let d5Total = d4Total + d5;
 
-            hitMe.addEventListener("click", function hit() {
-                if (playerTotal1And2 < 21) {
-                    let pickCard3 = Math.floor(Math.random() * 13);
-                    pCard3.innerHTML = allCards[pickCard3] + "--";
-                    if (pickCard3 + playerTotal1And2 > 21) {
-                        playerExtraCards.innerHTML = "BUST!";
-                        dealerExtraCards.innerHTML = "Dealer Wins--";
+            dealOutCards.addEventListener("click", function start() {
+                let pStayTotal = 0;
+                let dBust = false;
+                let pBust = false;
+                let count = 0;
+                let pickCard1 = Math.floor(Math.random() * 13);
+                let pickCard2 = Math.floor(Math.random() * 13);
+                let pickCard3 = Math.floor(Math.random() * 13);
+                let pickCard4 = Math.floor(Math.random() * 13);
+                let pickCard5 = Math.floor(Math.random() * 13);
+
+                let total1And2 = parseFloat(allCards[pickCard1]) + parseFloat(allCards[pickCard2]);
+                let first = parseFloat(allCards[pickCard1]);
+                let second = parseFloat(allCards[pickCard2]);
+                let third = parseFloat(allCards[pickCard3]);
+                let fourth = parseFloat(allCards[pickCard4]);
+                let fifth = parseFloat(allCards[pickCard5]);
+                let threeTotal = total1And2 + third;
+                let fourTotal = threeTotal + fourth;
+                let fiveTotal = fourTotal + fifth;
+
+                pStayTotal = total1And2;
+
+                pCard1.innerHTML = first;
+                pCard2.innerHTML = second;
+                dCard1.innerHTML = d1;
+                dCard2.innerHTML = "X";
+                dCard3.innerHTML = "x-";
+                dCard4.innerHTML = "-x-";
+                dCard5.innerHTML = "-x";
+                pCard3.innerHTML = "x-";
+                pCard4.innerHTML = "-x-";
+                pCard5.innerHTML = "-x";
+                dealerExtraCards.innerHTML = "-";
+                playerExtraCards.innerHTML = "-";
+
+                console.log(pStayTotal);
+
+                hitMe.addEventListener("click", function hit() {
+                    if(!pBust) {
+                        addCard(count);
+                        count++;
+                    }
+                });
+
+                function addCard(count) {
+                    if(count === 0) {
+                        pCard3.innerHTML = third + "--";
+                        pStayTotal = threeTotal;
+                        if (threeTotal > 21) {
+                            playerExtraCards.innerHTML = "BUST!";
+                            dealerExtraCards.innerHTML = "Dealer Wins!--";
+                            dChipAmount += parseFloat(placeBet.value);
+                            pBust = true;
+                            submitBet.disabled = false;
+                        }
+                    } else if (count === 1) {
+                        pStayTotal = fourTotal;
+                        pCard4.innerHTML = fourth + "--";
+                        if(fourTotal > 21){
+                            playerExtraCards.innerHTML = "BUST!";
+                            dealerExtraCards.innerHTML = "Dealer Wins!--";
+                            dChipAmount += parseFloat(placeBet.value);
+                            pBust = true;
+                            submitBet.disabled = false;
+                        }
+                    } else if (count === 2){
+                        pStayTotal = fiveTotal;
+                        pCard5.innerHTML = fifth;
+                        if(fiveTotal > 21){
+                            playerExtraCards.innerHTML = "BUST!";
+                            dealerExtraCards.innerHTML = "Dealer Wins!--";
+                            dChipAmount += parseFloat(placeBet.value);
+                            pBust = true;
+                            submitBet.disabled = false;
+                        }
                     }
                 }
-            });
 
-            stay.addEventListener("click", function stay() {
-                let pickDealerCard2 = Math.floor(Math.random() * 13);
-                dCard2.innerHTML = allCards[pickDealerCard2];
-                let dealerTotal1And2 = pickDealerCard2 + pickDealerCard1;
-                if (dealerTotal1And2 < 21) {
-                    let pickDealerCard3 = Math.floor(Math.random() * 13);
-                    dCard3.innerHTML = allCards[pickDealerCard3];
-                    if (dealerTotal1And2 + pickDealerCard3 > 21) {
-                        dealerExtraCards.innerHTML = "BUST!";
-                        playerExtraCards.innerHTML = "Player Wins!--";
-                    } else if (dealerTotal1And2 > playerTotal1And2) {
+                stay.addEventListener("click", function stay() {
+                    dCard2.innerHTML = d2;
+                    if(d1And2 >  pStayTotal){
+                        dealerExtraCards.innerHTML = "Dealer Wins--";
                         playerExtraCards.innerHTML = "Dealer Wins--";
-                        dealerExtraCards.innerHTML = "Dealer Wins--";
-                    } else if (dealerTotal1And2 < playerTotal1And2) {
-                        playerExtraCards.innerHTML = "Player Wins--";
-                        dealerExtraCards.innerHTML = "Player Wins--";
+                        submitBet.disabled = false;
+                    } else {
+                        dCard3.innerHTML = d3;
                     }
-                }
-            });
+                    if(d3Total < 21 && d3Total < pStayTotal){
+                        dCard4.innerHTML = d4;
+                    } else if(d3Total > 21){
+                        dealerExtraCards.innerHTML = "BUST!";
+                        playerExtraCards.innerHTML = "Player Wins--";
+                        pChipAmount += parseFloat(dealerBetRandom);
+                        submitBet.disabled = false;
+                    } else if(d3Total > pStayTotal){
+                        playerExtraCards.innerHTML = "Dealer Wins--";
+                        dealerExtraCards.innerHTML = "Dealer Wins!--";
+                        dChipAmount += parseFloat(placeBet.value);
+                        pBust = true;
+                        submitBet.disabled = false;
+                    }
+                    if(d4Total < 21 && d4Total < pStayTotal){
+                        dCard5.innerHTML = d5;
+                    } else if(d4Total > 21){
+                        dealerExtraCards.innerHTML = "BUST!";
+                        playerExtraCards.innerHTML = "Player Wins--";
+                        pChipAmount += parseFloat(dealerBetRandom);
+                        submitBet.disabled = false;
+                    } else if(d4Total > pStayTotal){
+                        playerExtraCards.innerHTML = "Dealer Wins--";
+                        dealerExtraCards.innerHTML = "Dealer Wins!--";
+                        dChipAmount += parseFloat(placeBet.value);
+                        pBust = true;
+                        submitBet.disabled = false;
+                    }
+                    if(d5Total > 21){
+                        dealerExtraCards.innerHTML = "BUST!";
+                        playerExtraCards.innerHTML = "Player Wins--";
+                        pChipAmount += parseFloat(dealerBetRandom);
+                        submitBet.disabled = false;
+                    } else if(d5Total > pStayTotal){
+                        playerExtraCards.innerHTML = "Dealer Wins--";
+                        dealerExtraCards.innerHTML = "Dealer Wins!--";
+                        dChipAmount += parseFloat(placeBet.value);
+                        pBust = true;
+                        submitBet.disabled = false;
+                    }
+                });
 
-            fold.addEventListener("click", function end(){
-               let pickDealerCard2 = Math.floor(Math.random() * 13);
-               dCard2.innerHTML = allCards[pickDealerCard2];
-               dealerExtraCards.innerHTML = "Dealer Wins--";
-               playerExtraCards.innerHTML = "Dealer Wins--";
-            });
+                fold.addEventListener("click", function end(){
+                    dCard2.innerHTML = d2;
+                    dealerExtraCards.innerHTML = "Dealer Wins--";
+                    playerExtraCards.innerHTML = "Dealer Wins--";
+                    submitBet.disabled = false;
 
+                });
+            });
         });
     }
 
